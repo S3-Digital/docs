@@ -15,23 +15,19 @@ export default defineConfig({
 				},
 			},
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }
+				{
+					label: 'GitHub',
+					href: 'https://github.com/withastro/starlight',
+					icon: 'github',
+				},
 			],
 			sidebar: [
-<<<<<<< HEAD
-    {
-        label: 'Dokumentacja',
-        autogenerate: { directory: 'docs' } // lub po prostu directory: '.' zależnie gdzie masz pliki
-    }
-]
-=======
 				{
-					label: 'Przewodniki',
-					// Opcja 1: Szukaj wszystkiego w folderze docs
+					label: 'Dokumentacja',
+					// To wygeneruje listę ze wszystkich plików w folderze docs
 					autogenerate: { directory: '.' },
 				},
 			],
->>>>>>> c9856ea (zapisuje biezace zmiany przed pull)
 		}),
 	],
 });
