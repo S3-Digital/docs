@@ -20,17 +20,25 @@ import config from '../../data/config.yaml';
   apiKey={config.modules.dashboard.api_key} 
 />
 
-<CardGrid>
+<CardGrid stagger>
   <Card title="Dashboardy i Raporty" icon="document">
-    Dostęp do raportów live i statusów prac.
+    Analiza wyników i notatki z zarządem.
+    [Wejdź do raportów](/reports/)
   </Card>
   <Card title="Dokumentacja Projektów" icon="open-book">
-    Szczegóły techniczne, specyfikacje i makiety.
-  </Card>
-  <Card title="Baza Wiedzy (Ogólna)" icon="setting">
-    Poradniki i instrukcje dla klienta.
+    Makiety i strategie marketingowe.
+    [Przeglądaj projekty](/projects/marketing/)
   </Card>
   <Card title="Rozliczenia i Umowy" icon="puzzle">
-    Faktury, umowy i warunki współpracy.
+    Umowy, RODO i dostęp do Google Drive.
+    [Sprawdź dokumenty](/billing/)
+  </Card>
+  <Card title="Komunikacja Zespołowa" icon="comment">
+    Notatki operacyjne i ustalenia międzyzespołowe.
+    [Otwórz panel komunikacji](/communication/)
+  </Card>
+  <Card title="Baza Wiedzy (Ogólna)" icon="setting">
+    Poradniki i standardy współpracy.
+    [Przejdź do bazy wiedzy](https://baza-wiedzy.twoja-domena.com)
   </Card>
 </CardGrid>
