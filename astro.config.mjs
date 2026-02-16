@@ -18,13 +18,17 @@ export default defineConfig({
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }
 			],
 			sidebar: [
-				{
-					label: 'Wszystkie Instrukcje',
-					// To jest najważniejsza linia.
-					// Sprawia, że Astro samo szuka plików i nie musisz ich wpisywać ręcznie.
-					autogenerate: { directory: '.' },
-				},
-			],
+    {
+        label: 'Przewodniki',
+        // Jawnie wskazujemy folder "guides"
+        autogenerate: { directory: 'guides' },
+    },
+    {
+        label: 'Referencje',
+        // Jawnie wskazujemy folder "reference"
+        autogenerate: { directory: 'reference' },
+    },
+],
 		}),
 	],
 });
