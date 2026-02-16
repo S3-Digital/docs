@@ -1,0 +1,31 @@
+{
+    "Spotkanie Statusowe": {
+        "prefix": "spotkanie",
+        "body": [
+            "---",
+            "title: Spotkanie statusowe - $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR",
+            "description: Podsumowanie sprintu i plan na kolejny tydzień.",
+            "---",
+            "",
+            "import { Aside } from '@astrojs/starlight/components';",
+            "",
+            "## 👥 Obecni",
+            "- Jan Kowalski (Klient)",
+            "- Anna Nowak (PM)",
+            "",
+            "## 📝 Omówione tematy",
+            "1. ",
+            "",
+            "## ✅ Action Items",
+            "- [ ] ",
+            "",
+            "## 📅 Następne spotkanie",
+            "",
+            "<Aside type=\"tip\" title=\"Zapisz termin\">",
+            "  Widzimy się **23.02.2026 o godz. 10:00**.",
+            "  👉 [Kliknij tutaj, aby dołączyć](link)",
+            "</Aside>"
+        ],
+        "description": "Szablon notatki ze spotkania"
+    }
+}
