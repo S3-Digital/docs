@@ -8,6 +8,7 @@ import { Badge, Steps } from '@astrojs/starlight/components';
 ## 🕒 Ostatnie ustalenia zespołowe
 
 <Steps>
+<ol>
 {timeline.map((item) => (
   <li>
     <strong>{item.date}</strong> — {item.team} 
@@ -16,6 +17,7 @@ import { Badge, Steps } from '@astrojs/starlight/components';
     _{item.task}_ (Zgłosił: {item.author})
   </li>
 ))}
+</ol>
 </Steps>
 
-> **Testowanie:** Dodaj nowy obiekt do pliku `src/data/timeline.json` na GitHubie i sprawdź, czy pojawił się na górze tej listy.
+> **Testowanie:** Dodaj nowy wpis do pliku `src/data/timeline.json` i sprawdź, czy lista się wydłużyła.

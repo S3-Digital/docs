@@ -1,24 +1,47 @@
 ---
 ---
-<div id="active-dashboards" style="min-height: 50px; border: 2px dashed var(--sl-color-gray-5); padding: 1rem; margin-bottom: 2rem; border-radius: 10px;">
-  <p id="empty-msg" style="text-align: center; color: var(--sl-color-gray-3);">Brak aktywnych dashboardów. Kliknij kafelek poniżej, aby go otworzyć.</p>
+<div id="active-dashboards" style="min-height: 80px; border: 2px dashed var(--sl-color-gray-5); padding: 1.5rem; margin-bottom: 2rem; border-radius: 12px; transition: all 0.3s ease;">
+  <p id="empty-msg" style="text-align: center; color: var(--sl-color-gray-3); margin: 0;">🗂️ Brak aktywnych dashboardów. Wybierz kafelek z listy poniżej.</p>
 </div>
 
-<div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-  <div class="dash-tile" data-id="speed" style="cursor: pointer; padding: 1rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 8px;">
-    <strong>🚀 Prędkość Strony (Zanim vs Po)</strong>
-    <div class="content" style="display: none; margin-top: 1rem;">
-      <div style="display: flex; justify-content: space-around; background: #000; padding: 10px; border-radius: 5px;">
-        <div style="color: #ef4444; text-align: center;">PRZED: 34ms</div>
-        <div style="color: #10b981; text-align: center;">PO: 92ms</div>
+<div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+  <div class="dash-tile" data-id="speed" style="cursor: pointer; padding: 1.5rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 8px;">
+    <div style="display: flex; justify-content: space-between;">
+        <strong>🚀 Prędkość Strony (PSI)</strong>
+        <span style="font-size: 0.65rem; color: #10b981; border: 1px solid #10b981; padding: 1px 5px; border-radius: 4px;">LIVE</span>
+    </div>
+    
+    <div class="content" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--sl-color-gray-5); padding-top: 1rem;">
+      <div style="margin-bottom: 15px;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px;">
+            <span>Przed optymalizacją (Start)</span>
+            <span style="color: #ef4444; font-weight: bold;">34/100</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: var(--sl-color-gray-6); border-radius: 4px;">
+            <div style="width: 34%; height: 100%; background: #ef4444; border-radius: 4px;"></div>
+        </div>
       </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px;">
+            <span>Obecnie (Final)</span>
+            <span style="color: #10b981; font-weight: bold;">92/100</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: var(--sl-color-gray-6); border-radius: 4px;">
+            <div style="width: 92%; height: 100%; background: #10b981; border-radius: 4px; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);"></div>
+        </div>
+      </div>
+      <p style="font-size: 0.7rem; color: var(--sl-color-gray-3); margin-top: 1rem;">* Test przeprowadzony na urządzeniach mobilnych (4G throttled).</p>
     </div>
   </div>
 
-  <div class="dash-tile" data-id="seo" style="cursor: pointer; padding: 1rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 8px;">
-    <strong>📈 Wyniki SEO (Q1)</strong>
-    <div class="content" style="display: none; margin-top: 1rem;">
-      <p>Wzrost widoczności o 15% m/m.</p>
+  <div class="dash-tile" data-id="seo" style="cursor: pointer; padding: 1.5rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 8px;">
+    <strong>📈 Wyniki SEO (Search Console)</strong>
+    <div class="content" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--sl-color-gray-5); padding-top: 1rem;">
+      <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 6px; border: 1px solid #3b82f6;">
+        <span style="font-size: 2rem; font-weight: bold; color: #3b82f6;">+15.4%</span>
+        <p style="font-size: 0.8rem; margin: 0;">Wzrost kliknięć organicznych m/m</p>
+      </div>
     </div>
   </div>
 </div>
@@ -27,20 +50,25 @@
   const tiles = document.querySelectorAll('.dash-tile');
   const activeArea = document.getElementById('active-dashboards');
   const emptyMsg = document.getElementById('empty-msg');
+  const grid = document.querySelector('.dashboard-grid');
 
   tiles.forEach(tile => {
-    tile.addEventListener('click', () => {
+    tile.addEventListener('click', (e) => {
       const content = tile.querySelector('.content');
       const isExpanded = content.style.display === 'block';
 
       if (!isExpanded) {
         content.style.display = 'block';
-        activeArea.appendChild(tile); // Przenosi na górę
+        activeArea.appendChild(tile);
         emptyMsg.style.display = 'none';
+        tile.style.borderColor = '#3b82f6';
       } else {
         content.style.display = 'none';
-        document.querySelector('.dashboard-grid').appendChild(tile); // Wraca na dół
-        if (activeArea.children.length === 1) emptyMsg.style.display = 'block';
+        grid.appendChild(tile);
+        tile.style.borderColor = 'var(--sl-color-hairline)';
+        if (activeArea.querySelectorAll('.dash-tile').length === 0) {
+            emptyMsg.style.display = 'block';
+        }
       }
     });
   });
