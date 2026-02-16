@@ -12,5 +12,12 @@
         "task": "Konfiguracja kont dostępowych",
         "status": "done",
         "author": "Ania (HR)"
+    },
+    {
+        "date": "15.02.2026",
+        "team": "Finance x HR",
+        "task": "Aktualizacja płac",
+        "status": "in-progress",
+        "author": "Ania (HR)"
     }
 ]

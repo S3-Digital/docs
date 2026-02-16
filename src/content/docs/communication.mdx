@@ -2,22 +2,38 @@
 title: Panel Komunikacji Operacyjnej
 ---
 
-import timeline from '../../data/timeline.json';
-import { Badge, Steps } from '@astrojs/starlight/components';
-
 ## 🕒 Ostatnie ustalenia zespołowe
 
-<Steps>
-<ol>
-{timeline.map((item) => (
-  <li>
-    <strong>{item.date}</strong> — {item.team} 
-    <Badge text={item.status === 'done' ? 'ZAKOŃCZONE' : 'W TOKU'} variant={item.status === 'done' ? 'success' : 'note'} />
-    <br/>
-    _{item.task}_ (Zgłosił: {item.author})
-  </li>
-))}
-</ol>
-</Steps>
+<div id="timeline-container">Ładowanie najnowszych ustaleń...</div>
 
-> **Testowanie:** Dodaj nowy wpis do pliku `src/data/timeline.json` i sprawdź, czy lista się wydłużyła.
+<script>
+  async function loadTimeline() {
+    // Tutaj wkleisz link do swojego Gista lub Google Sheets
+    const GIST_URL = 'https://gist.githubusercontent.com/TWOJA_NAZWA/ID_GISTA/raw/timeline.json';
+    const container = document.getElementById('timeline-container');
+
+    try {
+      const res = await fetch(GIST_URL);
+      const data = await res.json();
+      
+      let html = '<section class="sl-steps"><ol>';
+      data.forEach(item => {
+        const badgeClass = item.status === 'done' ? 'success' : 'note';
+        const badgeText = item.status === 'done' ? 'ZAKOŃCZONE' : 'W TOKU';
+        
+        html += `
+          <li>
+            <strong>${item.date}</strong> — ${item.team} 
+            <span class="sl-badge ${badgeClass}">${badgeText}</span><br/>
+            <em>${item.task}</em> <small>(Zgłosił: ${item.author})</small>
+          </li>`;
+      });
+      html += '</ol></section>';
+      container.innerHTML = html;
+    } catch (e) {
+      container.innerHTML = 'Błąd pobierania notatek.';
+    }
+  }
+
+  loadTimeline();
+</script>
