@@ -1,38 +1,52 @@
 ---
 title: Baza Wiedzy Sikora Digital
-description: Centrum dokumentacji i raportowania.
-# template: splash <- USUNIĘTE (dzięki temu widać menu boczne)
+description: Witaj w panelu klienta.
+template: splash
+hero:
+  tagline: Witaj w panelu klienta. Poniżej znajdziesz dostęp do raportów oraz dokumentacji Twoich projektów.
+  actions:
+    - text: Przeglądaj dokumentację
+      link: /guides/
+      icon: right-arrow
+      variant: primary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import ServerStatus from '../../components/dashboard/ServerStatus.astro';
+import config from '../../data/config.yaml';
 
-Witaj w panelu klienta. Poniżej znajdziesz dostęp do raportów oraz dokumentacji Twoich projektów.
+{/* --- TUTAJ ZACZYNA SIĘ NASZ TEST --- */}
 
-<CardGrid>
-    
-    <Card title="Dashboardy i Raporty" icon="bars">
-        Dostęp do raportów live i statusów prac.
+<div style="background: blue; color: white; padding: 15px; text-align: center; margin-bottom: 20px; border-radius: 8px;">
+  🟦 TEST: Jeśli widzisz ten pasek, to zmiany weszły!
+</div>
+
+<ServerStatus 
+  enabled={config.modules.dashboard.enabled} 
+  apiKey={config.modules.dashboard.api_key} 
+/>
+
+{/* --- KONIEC NASZEGO TESTU, PONIŻEJ TWOJE STARE KAFELKI --- */}
+
+<CardGrid stagger>
+	<Card title="Dashboardy i Raporty" icon="document">
+		Dostęp do raportów live i statusów prac.
         
         *Tu będą linki do Looker Studio / PowerBI.*
-    </Card>
-
-    <Card title="Dokumentacja Projektów" icon="document">
-        Szczegóły techniczne, specyfikacje i makiety.
+	</Card>
+	<Card title="Dokumentacja Projektów" icon="open-book">
+		Szczegóły techniczne, specyfikacje i makiety.
         
-        - [Przejdź do listy projektów](/projekty/lista)
-    </Card>
-
-    <Card title="Baza Wiedzy (Ogólna)" icon="open-book">
-        Poradniki i instrukcje (np. jak zgłaszać błędy).
+        * [Przejdź do listy projektów](/projects/)
+	</Card>
+	<Card title="Baza Wiedzy (Ogólna)" icon="setting">
+		Poradniki i instrukcje (np. jak zgłaszać błędy).
         
-        - [Instrukcje dla klienta](/guides/baza-wiedzy)
-    </Card>
-
-    <Card title="Rozliczenia i Umowy" icon="seti:lock">
-        Faktury, umowy i warunki współpracy.
+        * [Instrukcje dla klienta](/guides/)
+	</Card>
+	<Card title="Rozliczenia i Umowy" icon="puzzle">
+		Faktury, umowy i warunki współpracy.
         
         Dostęp tylko dla Zarządu.
-   [Wejdź do Strefy](/admin)
-    </Card>
-
+	</Card>
 </CardGrid>
