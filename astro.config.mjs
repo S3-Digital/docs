@@ -7,7 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'My Docs',
-			defaultLocale: 'pl', // Ustawiamy polski jako domyślny
+			defaultLocale: 'pl',
 			locales: {
 				pl: {
 					label: 'Polski',
@@ -19,16 +19,10 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Poradniki', // Zamiast Guides
-					items: [
-						// Pamiętaj, żeby potem zmienić też folder/plik na dysku, jeśli chcesz zachować porządek
-						// Ale na razie slug 'guides/example' może zostać, to tylko adres URL
-						{ label: 'Przykładowy Poradnik', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Baza Wiedzy', // Zamiast Reference
-					autogenerate: { directory: 'reference' },
+					label: 'Wszystkie Instrukcje',
+					// To jest najważniejsza linia.
+					// Sprawia, że Astro samo szuka plików i nie musisz ich wpisywać ręcznie.
+					autogenerate: { directory: '.' },
 				},
 			],
 		}),
