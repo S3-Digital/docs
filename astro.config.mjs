@@ -18,12 +18,11 @@ export default defineConfig({
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }
 			],
 			sidebar: [
-	{
-		label: 'Przewodniki',
-		// Zamiast kropki '.', spróbuj wpisać pusty string lub '/'
-		autogenerate: { directory: '' }, 
-	},
-],
+				{
+					label: 'Wszystkie Instrukcje',
+					autogenerate: { directory: 'reference' }, // Tu wskazujemy folder "reference"
+				},
+			],
 		}),
 	],
 });
