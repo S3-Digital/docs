@@ -1,39 +1,21 @@
 ---
 title: Panel Komunikacji Operacyjnej
+description: Operacyjne ustalenia między zespołami.
 ---
 
+import LiveTimeline from '../../components/dashboard/LiveTimeline.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="Oszczędność buildów">
+  Ten panel pobiera dane "na żywo". Edycja notatek w zewnętrznym pliku nie zużywa limitów Cloudflare.
+</Aside>
+
 ## 🕒 Ostatnie ustalenia zespołowe
+Poniżej znajdują się najnowsze wpisy pobierane bezpośrednio z bazy operacyjnej.
 
-<div id="timeline-container">Ładowanie najnowszych ustaleń...</div>
+<LiveTimeline />
 
-<script>
-  async function loadTimeline() {
-    // Tutaj wkleisz link do swojego Gista lub Google Sheets
-    const GIST_URL = 'https://gist.githubusercontent.com/TWOJA_NAZWA/ID_GISTA/raw/timeline.json';
-    const container = document.getElementById('timeline-container');
+---
 
-    try {
-      const res = await fetch(GIST_URL);
-      const data = await res.json();
-      
-      let html = '<section class="sl-steps"><ol>';
-      data.forEach(item => {
-        const badgeClass = item.status === 'done' ? 'success' : 'note';
-        const badgeText = item.status === 'done' ? 'ZAKOŃCZONE' : 'W TOKU';
-        
-        html += `
-          <li>
-            <strong>${item.date}</strong> — ${item.team} 
-            <span class="sl-badge ${badgeClass}">${badgeText}</span><br/>
-            <em>${item.task}</em> <small>(Zgłosił: ${item.author})</small>
-          </li>`;
-      });
-      html += '</ol></section>';
-      container.innerHTML = html;
-    } catch (e) {
-      container.innerHTML = 'Błąd pobierania notatek.';
-    }
-  }
-
-  loadTimeline();
-</script>
+## ℹ️ Instrukcja dla zespołu
+Aby dodać nową notatkę, edytuj plik w **GitHub Gist** (lub Google Sheets). Zmiany pojawią się tutaj po odświeżeniu strony przez klienta.
