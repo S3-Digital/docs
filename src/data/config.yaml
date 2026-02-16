@@ -1,0 +1,8 @@
+# src/data/config.yaml
+client_name: "Klient Testowy"
+
+modules:
+  dashboard:
+    enabled: true
+    provider: "uptimerobot"
+    api_key: ""

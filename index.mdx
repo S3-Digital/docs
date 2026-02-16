@@ -1,4 +1,25 @@
 ---
-title: Strona Główna
+title: Witaj w Panelu Klienta
+description: Centrum dowodzenia projektem
+template: splash
+hero:
+  tagline: Poniżej znajdziesz statusy usług i dokumentację.
+  actions:
+    - text: Przejdź do dokumentacji
+      link: /guides/
+      icon: right-arrow
+      variant: primary
 ---
-Test
+
+import ServerStatus from '../../../components/dashboard/ServerStatus.astro';
+import config from '../../../data/config.yaml';
+
+{/* To jest ten moduł, który włącza/wyłącza PM w YAML */}
+<ServerStatus 
+  enabled={config.modules.dashboard.enabled} 
+  apiKey={config.modules.dashboard.api_key} 
+/>
+
+## Najnowsze aktualizacje
+
+Tutaj możesz wpisać ręcznie jakieś ogłoszenia...

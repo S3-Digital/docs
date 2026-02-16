@@ -1,13 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import yaml from '@rollup/plugin-yaml'; // <--- 1. DODANO IMPORT TUTAJ
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Moje dokumenty',
-			defaultLocale: 'pl',
+			defaultLocale: 'pl', // Twoje ustawienia językowe zostają bez zmian
 			locales: {
 				pl: {
 					label: 'Polski',
@@ -30,4 +31,8 @@ export default defineConfig({
 			],
 		}),
 	],
+	// <--- 2. DODANO SEKCJĘ VITE NA SAMYM DOLE (poza nawiasem integrations)
+	vite: {
+		plugins: [yaml()]
+	}
 });
