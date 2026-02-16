@@ -1,25 +1,28 @@
 ---
-title: Witaj w Panelu Klienta
-description: Centrum dowodzenia projektem
+title: PANEL TESTOWY V2
+description: Testowanie dashboardu
 template: splash
 hero:
-  tagline: Poniżej znajdziesz statusy usług i dokumentację.
+  tagline: Sprawdzamy czy widać zmiany.
   actions:
-    - text: Przejdź do dokumentacji
+    - text: Dokumentacja
       link: /guides/
       icon: right-arrow
       variant: primary
 ---
 
-import ServerStatus from '../../../components/dashboard/ServerStatus.astro';
-import config from '../../../data/config.yaml';
+{/* POPRAWIONA ŚCIEŻKA - TYLKO DWIE KROPKI */}
+import ServerStatus from '../../components/dashboard/ServerStatus.astro';
+import config from '../../data/config.yaml';
 
-{/* To jest ten moduł, który włącza/wyłącza PM w YAML */}
+{/* PROSTY TEKST HTML ŻEBY SPRAWDZIĆ CZY PLIK DZIAŁA */}
+<div style="background: blue; color: white; padding: 20px; text-align: center; font-size: 24px; margin-bottom: 20px;">
+  CZY WIDZISZ TEN NIEBIESKI PASEK?
+</div>
+
 <ServerStatus 
   enabled={config.modules.dashboard.enabled} 
   apiKey={config.modules.dashboard.api_key} 
 />
 
-## Najnowsze aktualizacje
-
-Tutaj możesz wpisać ręcznie jakieś ogłoszenia...
+## Status projektu
