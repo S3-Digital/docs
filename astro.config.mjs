@@ -19,14 +19,9 @@ export default defineConfig({
 			],
 			sidebar: [
     {
-        label: 'Przewodniki',
-        // Jawnie wskazujemy folder "guides"
-        autogenerate: { directory: 'guides' },
-    },
-    {
-        label: 'Referencje',
-        // Jawnie wskazujemy folder "reference"
-        autogenerate: { directory: 'reference' },
+        label: 'Wszystkie Instrukcje',
+        // Użyj kropki '.' - to każe szukać w całym folderze src/content/docs
+        autogenerate: { directory: '.' },
     },
 ],
 		}),
