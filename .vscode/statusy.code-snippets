@@ -1,0 +1,34 @@
+{
+    "Status tygodniowy": {
+        "scope": "markdown",
+        "prefix": "status",
+        "body": [
+            "---",
+            "title: \"Status tygodniowy - ${1:Nazwa projektu}\"",
+            "date: \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"",
+            "author: \"${2:Imię PM}\"",
+            "client: \"${3:Nazwa klienta}\"",
+            "type: \"weekly-status\"",
+            "---",
+            "",
+            "## ✅ Co zrobiliśmy w tym tygodniu",
+            "- ${4:Rezultat 1}",
+            "- ${5:Rezultat 2}",
+            "",
+            "## 🚧 W toku",
+            "- ${6:Zadanie w toku 1}",
+            "- ${7:Zadanie w toku 2}",
+            "",
+            "## ⚠️ Ryzyka / Zależności",
+            "- ${8:Ryzyko / zależność}",
+            "",
+            "## ⏭️ Plan na kolejny tydzień",
+            "- ${9:Plan 1}",
+            "- ${10:Plan 2}",
+            "",
+            "## 📝 Komentarze dla klienta",
+            "${0:Dodatkowe uwagi...}"
+        ],
+        "description": "Tygodniowy status projektu dla klienta"
+    }
+}
