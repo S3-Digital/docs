@@ -1,32 +1,21 @@
 ---
-title: "Komunikacja Zespołowa"
-description: Operacyjne ustalenia między zespołami.
+title: Panel Komunikacji Operacyjnej
 ---
 
-import { Steps, Aside } from '@astrojs/starlight/components';
+import timeline from '../../data/timeline.json';
+import { Badge, Steps } from '@astrojs/starlight/components';
 
-<Aside type="caution" title="Poufność">
-  Ta sekcja jest przeznaczona dla zespołów operacyjnych (HR, Marketing, Specjaliści). Notatki strategiczne CEO znajdują się w sekcji Raporty.
-</Aside>
-
-## 🕒 Oś czasu ustaleń (Timeline)
+## 🕒 Ostatnie ustalenia zespołowe
 
 <Steps>
-1.  **16.02.2026** (HR x Sikora Digital):  
-    Przekazanie materiałów graficznych do nowej kampanii rekrutacyjnej. 
-    *Status: W trakcie realizacji.*
-
-2.  **12.02.2026** (Specjaliści IT):  
-    Ustalenie dostępu do API dla widgetu statusu.
-    *Status: Zakończono.*
-
-3.  **05.02.2026** (Kick-off operacyjny):  
-    Podział ról w projekcie "Employer Branding".
+{timeline.map((item) => (
+  <li>
+    <strong>{item.date}</strong> — {item.team} 
+    <Badge text={item.status === 'done' ? 'ZAKOŃCZONE' : 'W TOKU'} variant={item.status === 'done' ? 'success' : 'note'} />
+    <br/>
+    _{item.task}_ (Zgłosił: {item.author})
+  </li>
+))}
 </Steps>
 
----
-
-## 📝 Szybkie notatki
-*Tutaj możesz dopisać bieżące uwagi dla naszego zespołu.*
-
-> **Przykład:** Prośba o aktualizację banerów na stronie kariery do piątku.
+> **Testowanie:** Dodaj nowy obiekt do pliku `src/data/timeline.json` na GitHubie i sprawdź, czy pojawił się na górze tej listy.

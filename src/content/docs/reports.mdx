@@ -4,37 +4,12 @@ description: Raporty marketingowe i statusy projektów.
 ---
 
 import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+import DashboardManager from '../../components/dashboard/DashboardManager.astro';
 
-## 📊 Dashboardy Wynikowe (Live)
+## 🎛️ Centrum Zarządzania Dashboardami
+Kliknij w poniższe kafelki, aby przypiąć je do panelu aktywnego na górzie i zobaczyć szczegóły.
 
-<details>
-<summary style="padding: 1rem; background: var(--sl-color-bg-nav); border-radius: 8px; cursor: pointer; margin-bottom: 1rem; border: 1px solid var(--sl-color-hairline);">
-  **KLIKNIJ: Optymalizacja Prędkości Strony (Zanim vs Potem)**
-</summary>
-
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: 8px;">
-  <div style="text-align: center;">
-    <h4 style="color: #ef4444;">PRZED (Start)</h4>
-    <div style="font-size: 3rem; font-weight: bold;">34</div>
-    <p>Mobile Performance</p>
-  </div>
-  <div style="text-align: center;">
-    <h4 style="color: #10b981;">OBECNIE</h4>
-    <div style="font-size: 3rem; font-weight: bold;">92</div>
-    <p>Mobile Performance</p>
-  </div>
-</div>
-
-*Wnioski: Czas ładowania skrócony o 4.2s dzięki optymalizacji skryptów JS.*
-</details>
-
-<details>
-<summary style="padding: 1rem; background: var(--sl-color-bg-nav); border-radius: 8px; cursor: pointer; border: 1px solid var(--sl-color-hairline);">
-  **KLIKNIJ: Ruch Organic (Google Search Console)**
-</summary>
-
-*Tu docelowo wstawimy iframe z Looker Studio lub grafikę z GSC.*
-</details>
+<DashboardManager />
 
 ---
 
@@ -42,15 +17,22 @@ import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
 <Tabs>
   <TabItem label="Raporty Marketingowe">
-    * [Raport Styczeń 2026 - PDF](#)
-    * [Analiza Konkurencji - Link](#)
-  </TabItem>
-  <TabItem label="Notatki ze spotkań (Zarząd)">
-    > **Dostęp limitowany:** Tylko dla Prezesa i CEO.
+    ### Cykliczne podsumowania
+    Poniżej znajdują się raporty z działań operacyjnych:
     
+    * [📄 Raport Styczeń 2026 - Podgląd PDF](#)
+    * [📊 Analiza Konkurencji Q1 - Link do arkusza](#)
+    * [📈 Wyniki Kampanii Ads - Looker Studio](#)
+  </TabItem>
+  
+  <TabItem label="Notatki ze spotkań (Zarząd)">
+    > **Dostęp limitowany:** Sekcja przeznaczona wyłącznie dla Prezesa, CEO oraz wyznaczonych opiekunów projektu.
+
+    ### Ostatnie ustalenia strategiczne
     <Steps>
-    1. **Spotkanie 10.02:** Ustalenie budżetu na Q2.
-    2. **Spotkanie 01.02:** Strategia wejścia na rynki zagraniczne.
+    1. **Spotkanie 10.02:** Zatwierdzenie budżetu na kampanię wiosenną i KPI dla działu sprzedaży.
+    2. **Spotkanie 01.02:** Omówienie strategii wejścia na rynek DACH (Niemcy, Austria, Szwajcaria).
+    3. **Spotkanie 15.01:** Podsumowanie roku 2025 i rewizja planów na 2026.
     </Steps>
   </TabItem>
 </Tabs>

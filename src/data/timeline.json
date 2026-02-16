@@ -1,0 +1,16 @@
+[
+    {
+        "date": "16.02.2026",
+        "team": "HR x Sikora",
+        "task": "Wysyłka grafik do kampanii",
+        "status": "in-progress",
+        "author": "Marek (Sikora Digital)"
+    },
+    {
+        "date": "15.02.2026",
+        "team": "IT x HR",
+        "task": "Konfiguracja kont dostępowych",
+        "status": "done",
+        "author": "Ania (HR)"
+    }
+]

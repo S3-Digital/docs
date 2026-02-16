@@ -1,0 +1,47 @@
+---
+---
+<div id="active-dashboards" style="min-height: 50px; border: 2px dashed var(--sl-color-gray-5); padding: 1rem; margin-bottom: 2rem; border-radius: 10px;">
+  <p id="empty-msg" style="text-align: center; color: var(--sl-color-gray-3);">Brak aktywnych dashboardów. Kliknij kafelek poniżej, aby go otworzyć.</p>
+</div>
+
+<div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+  <div class="dash-tile" data-id="speed" style="cursor: pointer; padding: 1rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 8px;">
+    <strong>🚀 Prędkość Strony (Zanim vs Po)</strong>
+    <div class="content" style="display: none; margin-top: 1rem;">
+      <div style="display: flex; justify-content: space-around; background: #000; padding: 10px; border-radius: 5px;">
+        <div style="color: #ef4444; text-align: center;">PRZED: 34ms</div>
+        <div style="color: #10b981; text-align: center;">PO: 92ms</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-tile" data-id="seo" style="cursor: pointer; padding: 1rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 8px;">
+    <strong>📈 Wyniki SEO (Q1)</strong>
+    <div class="content" style="display: none; margin-top: 1rem;">
+      <p>Wzrost widoczności o 15% m/m.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tiles = document.querySelectorAll('.dash-tile');
+  const activeArea = document.getElementById('active-dashboards');
+  const emptyMsg = document.getElementById('empty-msg');
+
+  tiles.forEach(tile => {
+    tile.addEventListener('click', () => {
+      const content = tile.querySelector('.content');
+      const isExpanded = content.style.display === 'block';
+
+      if (!isExpanded) {
+        content.style.display = 'block';
+        activeArea.appendChild(tile); // Przenosi na górę
+        emptyMsg.style.display = 'none';
+      } else {
+        content.style.display = 'none';
+        document.querySelector('.dashboard-grid').appendChild(tile); // Wraca na dół
+        if (activeArea.children.length === 1) emptyMsg.style.display = 'block';
+      }
+    });
+  });
+</script>
