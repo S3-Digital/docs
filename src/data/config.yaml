@@ -5,4 +5,4 @@ modules:
   dashboard:
     enabled: true
     provider: "uptimerobot"
-    api_key: ""
+    api_key: "m802364219-ac34321605f6e02d7d789069"
