@@ -7,11 +7,14 @@ interface Props {
 
 const { enabled, apiKey } = Astro.props;
 
-// Jeśli moduł wyłączony w YAML lub brak klucza - nie wyświetlaj nic
-if (!enabled || !apiKey) {
-  return null;
-}
+// UWAGA: Usunąłem sprawdzanie if (!enabled), żeby wymusić wyświetlenie
 ---
+
+<div style="border: 4px solid red; background: #ffe6e6; color: red; padding: 1rem; margin-bottom: 1rem; font-weight: bold;">
+  <p>--- TRYB DIAGNOSTYCZNY ---</p>
+  <p>Czy moduł włączony? (Enabled): <code>{JSON.stringify(enabled)}</code></p>
+  <p>Czy jest klucz API? (API Key): <code>{apiKey ? apiKey : "BRAK KLUCZA"}</code></p>
+</div>
 
 <div class="server-widget">
   <div class="header">
@@ -29,7 +32,6 @@ if (!enabled || !apiKey) {
 </div>
 
 <style>
-  /* Style dopasowane do Starlight */
   .server-widget {
     padding: 1rem;
     border: 1px solid var(--sl-color-gray-5);
@@ -52,8 +54,8 @@ if (!enabled || !apiKey) {
     text-transform: uppercase;
   }
   .badge.loading { background: var(--sl-color-gray-4); color: var(--sl-color-gray-1); }
-  .badge.online { background: #dcfce7; color: #166534; } /* Zielony */
-  .badge.offline { background: #fee2e2; color: #991b1b; } /* Czerwony */
+  .badge.online { background: #dcfce7; color: #166534; }
+  .badge.offline { background: #fee2e2; color: #991b1b; }
 
   .progress-bg {
     width: 100%;
@@ -65,7 +67,7 @@ if (!enabled || !apiKey) {
   .progress-fill {
     width: 0%;
     height: 100%;
-    background: #22c55e; /* Green-500 */
+    background: #22c55e;
     transition: width 1s ease-in-out;
   }
   .meta {
@@ -79,7 +81,8 @@ if (!enabled || !apiKey) {
 <script define:vars={{ apiKey }}>
   async function checkServer() {
     try {
-      // Zapytanie do UptimeRobot API
+      if (!apiKey) return; // Nie wykonuj zapytania bez klucza
+      
       const response = await fetch('https://api.uptimerobot.com/v2/getMonitors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -90,19 +93,16 @@ if (!enabled || !apiKey) {
       
       if (data.stat === 'ok' && data.monitors && data.monitors.length > 0) {
         const monitor = data.monitors[0];
-        const isUp = monitor.status === 2; // 2 = UP
+        const isUp = monitor.status === 2;
         
-        // Elementy DOM
         const badge = document.getElementById('status-badge');
         const bar = document.getElementById('uptime-bar');
         const text = document.getElementById('uptime-text');
 
-        // Aktualizacja UI
         if (badge && bar && text) {
             badge.innerText = isUp ? 'ONLINE' : 'OFFLINE';
             badge.className = isUp ? 'badge online' : 'badge offline';
 
-            // Parsowanie uptime (API czasem zwraca "99.98-98.00")
             let uptimeVal = 100;
             if (monitor.custom_uptime_ratio) {
                 uptimeVal = parseFloat(monitor.custom_uptime_ratio.split('-')[0]);
@@ -111,19 +111,15 @@ if (!enabled || !apiKey) {
             bar.style.width = `${uptimeVal}%`;
             text.innerText = `${uptimeVal}%`;
             
-            if(uptimeVal < 90) bar.style.background = '#ef4444'; // Red
+            if(uptimeVal < 90) bar.style.background = '#ef4444';
         }
       }
     } catch (e) {
       console.error("Widget Error:", e);
       const badge = document.getElementById('status-badge');
-      if(badge) {
-          badge.innerText = "Błąd API";
-          badge.className = 'badge offline';
-      }
+      if(badge) badge.innerText = "Błąd API";
     }
   }
 
-  // Uruchomienie
   checkServer();
 </script>
