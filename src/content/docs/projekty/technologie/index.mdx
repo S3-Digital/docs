@@ -1,22 +1,9 @@
 ---
-title: Panel Główny IT
-description: Strefa dostępna tylko dla zespołu technicznego.
+title: Wydajność i Stabilność
 ---
 
-import { Aside } from '@astrojs/starlight/components';
-// ZMIANA: Dodano jedną kropkę więcej (../../../../), żeby wyjść z folderu 'technologie'
 import ProjectContacts from '../../../../modules/ProjectContacts.astro';
 import ServerStatus from '../../../../modules/ServerStatus.astro';
 
-<Aside type="tip" title="Strefa Bezpieczna">
-  Jesteś w sekcji chronionej przez Cloudflare Access (Grupa: IT-Team).
-</Aside>
-
-## 1. Monitoring Systemów
 <ServerStatus />
-
-## 2. Kontakty Projektowe (IT)
 <ProjectContacts />
-
-## 3. Dokumentacja
-Tutaj znajduje się dokumentacja techniczna API oraz instrukcje deployu.
