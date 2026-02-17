@@ -1,16 +1,24 @@
 ---
 title: "PoC: System Operacyjny Sikora"
+description: "Testowa strona integrująca dane, logikę i moduły"
 ---
 
 import info from '../../../data/global-info.json';
 import BizCard from '../../../modules/BizCard.astro';
 import DeptStatus from '../../../modules/DeptStatus.astro';
+import SecuritySSL from '../../../modules/SecuritySSL.astro';
 
-### Podgląd Firmy (Dane z JSON)
-<DeptStatus nazwaDzialu="IT" info={info.działy.it} />
+## 🏢 Podgląd Jednostki Biznesowej
 <BizCard firma={info} />
 
 ---
 
-### Statusy Operacyjne (Ten sam JSON, inny moduł)
+## 🛡️ Bezpieczeństwo IT (Logika Systemowa)
+{/* To jest sekcja, której brakuje na Twoim screenie! */}
+<SecuritySSL sslData={info.security} />
+
+---
+
+## 📊 Statusy Operacyjne Działów
 <DeptStatus nazwaDzialu="Marketing" info={info.działy.marketing} />
+<DeptStatus nazwaDzialu="Infrastruktura IT" info={info.działy.it} />
