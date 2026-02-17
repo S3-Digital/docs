@@ -1,12 +1,45 @@
 ---
 title: Wzrost i Marketing
-description: Strategie i raporty.
+description: Strategia komunikacji i analiza wyników sprzedażowych.
 ---
 
+import { Card, CardGrid, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+import MarketingFunnel from '../../../../modules/MarketingFunnel.astro';
 import ProjectContacts from '../../../../modules/ProjectContacts.astro';
 
-## Status Kampanii
-Tutaj znajdą się raporty Google Ads.
+<Aside type="note" title="Cel na ten miesiąc">
+  Zwiększenie konwersji z kampanii Google Ads o 15% przy zachowaniu obecnego budżetu (optymalizacja ROAS).
+</Aside>
 
-## Opiekun Projektu
+## 📊 Lejek Sprzedażowy (Konwersja)
+Podgląd na to, jak ruch na stronie zamienia się w Twoich klientów.
+
+<MarketingFunnel />
+
+---
+
+## 🗺️ Strategia i Kanały
+Aktualne działania prowadzone przez Sikora Digital.
+
+<Tabs>
+  <TabItem label="Google Ads & SEO">
+    * **Status SEO:** 5 kluczowych fraz w TOP 3 (wzrost o 2 w tym miesiącu).
+    * **Kampanie Ads:** Skupienie na remarketingu osób, które porzuciły koszyk.
+    * [Zobacz raport miesięczny (PDF)](https://drive.google.com/...)
+  </TabItem>
+  <TabItem label="Content & Social">
+    * **LinkedIn:** Budowanie marki osobistej Zarządu (4 posty/tydzień).
+    * **Blog:** Publikacja 2 artykułów eksperckich budujących autorytet.
+    * [Harmonogram publikacji](/projekty/marketing/zasoby)
+  </TabItem>
+  <TabItem label="Kreatywa / Design">
+    * **Makiety:** Nowy landing page dla produktu X jest w fazie testów A/B.
+    * [Podgląd w Figma](https://figma.com/...)
+    * [Logotypy i Brandbook](/projekty/marketing/zasoby)
+  </TabItem>
+</Tabs>
+
+---
+
+## 👤 Opiekun Marki
 <ProjectContacts />

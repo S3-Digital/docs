@@ -1,0 +1,56 @@
+---
+// Dane aktualizowane przez PM po analizie Analytics/CRM
+const funnelData = [
+    { label: "Zasięg (Wrażenia)", value: "125,400", color: "#333" },
+    { label: "Wizyty na stronie", value: "12,200", color: "#444" },
+    { label: "Dodanie do koszyka", value: "850", color: "#555" },
+    {
+        label: "Finalna Sprzedaż",
+        value: "142",
+        color: "var(--sl-color-text-accent)",
+    },
+];
+---
+
+<div style="margin: 2rem 0; font-family: sans-serif;">
+    {
+        funnelData.map((step, index) => (
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "8px",
+                    width: `${100 - index * 10}%`, // Efekt zwężania się lejka
+                    minWidth: "200px",
+                }}
+            >
+                <div
+                    style={{
+                        backgroundColor: step.color,
+                        color: "#fff",
+                        padding: "12px 20px",
+                        borderRadius: "8px",
+                        flexGrow: 1,
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                >
+                    <span style="font-size: 0.9rem; font-weight: bold;">
+                        {step.label}
+                    </span>
+                    <span style="font-size: 1.1rem; font-weight: 800;">
+                        {step.value}
+                    </span>
+                </div>
+                {index < funnelData.length - 1 && (
+                    <div style="margin-left: 10px; color: var(--sl-color-text-muted); font-size: 1.2rem;">
+                        ↓
+                    </div>
+                )}
+            </div>
+        ))
+    }
+</div>
