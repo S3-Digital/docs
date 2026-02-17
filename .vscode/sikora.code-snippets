@@ -33,5 +33,29 @@
             "},"
         ],
         "description": "Dodaje nowy blok raportu do pliku JSON"
+    },
+    {
+        "Dodaj nowy raport (JSON)": {
+            "prefix": "add-report",
+            "body": [
+                "{",
+                "  \"id\": \"${1:2026-01}\",",
+                "  \"miesiac\": \"${2:Miesiąc 2026}\",",
+                "  \"ruch\": ${3:0},",
+                "  \"konwersje\": ${4:0},",
+                "  \"notatka\": \"${5:Wpisz analizę tutaj...}\"",
+                "},"
+            ],
+            "description": "Dodaje nowy blok raportu do pliku JSON"
+        },
+        "Klocek Security": {
+            "prefix": "add-security",
+            "body": [
+                "import SecurityStatus from '../../../../modules/SecurityStatus.astro';",
+                "",
+                "<SecurityStatus sslStatus=\"Active\" wafBlocked={${1:12}} lastScan=\"${CURRENT_DATE}\" />"
+            ],
+            "description": "Dodaje moduł statusu bezpieczeństwa"
+        }
     }
 }
