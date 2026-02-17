@@ -2,12 +2,14 @@
 title: Test Raportów Marketingowych
 ---
 
-import { RaportSEO } from '../../../../components/modules/RaportSEO.astro';
+import { RaportSEO } from '../../../../../components/modules/RaportSEO.astro';
 
-<RaportSEO client:visible
+# Raport testowy
+
+<RaportSEO 
   klientID="apex-solutions"
-  integracja="google-ads"
+  integracja="google-ads" 
   dane={[
-    { miesiac: 'Maj', ruch: 12500, konwersje: 120, notatka: 'Wpisz notatkę tutaj' },
-  ]}
+    { miesiac: 'Maj', ruch: 12500, konwersje: 120, notatka: 'Start kampanii' },
+  ]} 
 />
