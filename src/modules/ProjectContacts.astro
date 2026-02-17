@@ -1,6 +1,4 @@
 ---
-// To jest Twój "Klocuszek" z kontaktami.
-// Edytujesz go TYLKO TUTAJ.
 const contacts = [
     {
         role: "Project Manager",
@@ -18,19 +16,30 @@ const contacts = [
 ---
 
 <div
-    style="background: #1e1e1e; padding: 20px; border-radius: 8px; border: 1px solid #333;"
+    style="background: var(--sl-color-bg-nav); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--sl-color-hairline-light); color: var(--sl-color-text);"
 >
-    <h3>📞 Kontakty Projektowe (Live)</h3>
+    <h3 style="color: var(--sl-color-text-accent); margin-top: 0;">
+        📞 Kontakty Projektowe (Live)
+    </h3>
     <ul style="list-style: none; padding: 0;">
         {
             contacts.map((c) => (
-                <li style="margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 10px;">
-                    <strong>{c.role}:</strong> {c.name} <br />
-                    <a href={`tel:${c.phone}`} style="color: #4af;">
+                <li style="margin-bottom: 1rem; border-bottom: 1px solid var(--sl-color-hairline-light); padding-bottom: 0.5rem;">
+                    <strong style="color: var(--sl-color-white);">
+                        {c.role}:
+                    </strong>{" "}
+                    {c.name} <br />
+                    <a
+                        href={`tel:${c.phone}`}
+                        style="color: var(--sl-color-text-accent);"
+                    >
                         {c.phone}
                     </a>{" "}
                     |
-                    <a href={`mailto:${c.mail}`} style="color: #4af;">
+                    <a
+                        href={`mailto:${c.mail}`}
+                        style="color: var(--sl-color-text-accent);"
+                    >
                         {" "}
                         {c.mail}
                     </a>
@@ -38,7 +47,4 @@ const contacts = [
             ))
         }
     </ul>
-    <small style="color: #888;"
-        >Zaktualizowano: {new Date().toLocaleDateString()}</small
-    >
 </div>
