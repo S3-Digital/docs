@@ -1,32 +1,58 @@
 ---
-// src/modules/SecuritySSL.astro
-const { apiKey } = Astro.props; // Możesz przekazać klucz per klient
+import { getDaysToExpiry, getSecurityLevel } from "../utils/sikora-core";
 
-// Mock danych dla demonstracji (w wersji produkcyjnej fetch z API UptimeRobot)
-const sslData = {
-    status: "active", // active, warning (bliski termin), expired
-    expiryDate: "2027-01-15",
-    provider: "Cloudflare Inc",
+const { sslData } = Astro.props;
+const daysLeft = getDaysToExpiry(sslData.ssl_expiry);
+const level = getSecurityLevel(daysLeft);
+
+const statusMessages = {
+    safe: "Certyfikat jest bezpieczny",
+    warning: "Uwaga: Certyfikat wkrótce wygaśnie!",
+    danger: "KRYTYCZNE: Odnowienie natychmiastowe!",
 };
-
-const getStatusDetails = (status) => {
-    if (status === "active") return { label: "AKTYWNY", color: "#4caf50" };
-    if (status === "warning")
-        return { label: "WYGASA WKRÓTCE", color: "#ff9800" };
-    return { label: "NIEAKTYWNY / BŁĄD", color: "#f44336" };
-};
-
-const { label, color } = getStatusDetails(sslData.status);
 ---
 
-<div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
-    <div
-        style={`width: 8px; height: 8px; border-radius: 50%; background: ${color}; box-shadow: 0 0 5px ${color};`}
-    >
-    </div>
-    <span style="color: var(--sl-color-text-muted);">Certyfikat SSL:</span>
-    <strong style={`color: ${color};`}>{label}</strong>
-    <small style="color: #666; margin-left: auto;"
-        >(Ważny do: {sslData.expiryDate})</small
-    >
+<div class={`ssl-box ${level}`}>
+    <h4>Tarcza Bezpieczeństwa: {sslData.domain}</h4>
+    <p>{statusMessages[level]}</p>
+    <div class="days-counter">Zostało dni: <strong>{daysLeft}</strong></div>
 </div>
+
+<style>
+    .ssl-box {
+        padding: 15px;
+        border-left: 5px solid;
+        border-radius: 8px;
+        background: #1a1a1a;
+        margin: 20px 0;
+    }
+    .safe {
+        border-color: #48c774;
+        color: #48c774;
+    }
+    .warning {
+        border-color: #ffdd57;
+        color: #ffdd57;
+    }
+    .danger {
+        border-color: #f14668;
+        color: #f14668;
+        animation: pulse 2s infinite;
+    }
+    .days-counter {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: white;
+    }
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>

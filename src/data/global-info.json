@@ -2,6 +2,10 @@
     "nazwa": "Sikora EMPIRE",
     "NIP": "1234567890",
     "tagline": "Systemy, które myślą za Ciebie",
+    "security": {
+        "ssl_expiry": "2026-05-20",
+        "domain": "sikora-digital.pl"
+    },
     "działy": {
         "marketing": {
             "opiekun": "Ania",
@@ -9,13 +13,7 @@
         },
         "it": {
             "opiekun": "Marek",
-            "status": "active"
+            "status": "monitoring"
         }
-    },
-    "wyniki_roczne": [
-        10,
-        25,
-        15,
-        40
-    ]
+    }
 }
