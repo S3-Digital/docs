@@ -1,35 +1,51 @@
 ---
-title: Centrum Dowodzenia | Sikora Digital
+title: Centrum Dowodzenia
+description: Panel klienta Sikora Digital.
+template: splash
 hero:
   tagline: Pełny wgląd w rozwój Twojego cyfrowego ekosystemu.
   actions:
-    - text: Project Log (Oś czasu)
-      link: /project-log/
+    - text: Oś Czasu (Project Log)
+      link: /projekty/technologie/
       icon: rocket
+      variant: primary
+    - text: Przewodnik po panelu
+      link: /projekty/organizacja/
+      icon: open-book
+      variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import ServerStatus from '../../modules/ServerStatus.astro';
+import config from '../../data/config.yaml';
 
-{/* Status serwera jako dowód, że czuwacie nad jego biznesem 24/7 */}
-<ServerStatus />
+{/* Moduł Statusu - widoczny jeśli włączony w configu */}
+{config.modules.dashboard.enabled && (
+  <div style="margin-bottom: 2rem;">
+    <ServerStatus />
+  </div>
+)}
 
 <CardGrid>
-  <Card title="Wydajność i Stabilność" icon="rocket">
-    Czuwamy nad fundamentem Twojego biznesu. Tu znajdziesz monitoring uptime i dokumentację techniczną.
+  {/* Kafel 1: Technologie */}
+  <Card title="Wydajność i Stabilność" icon="laptop">
+    Czuwamy nad fundamentem Twojego biznesu. Monitoring uptime i dokumentacja techniczna.
     [Sprawdź status](/projekty/technologie/)
   </Card>
 
-  <Card title="Wzrost i Marketing" icon="chart">
+  {/* Kafel 2: Marketing */}
+  <Card title="Wzrost i Marketing" icon="rocket">
     Makiety, strategie i raporty z kampanii. Wszystko, co buduje Twoją widoczność.
     [Zobacz postępy](/projekty/marketing/)
   </Card>
 
-  <Card title="Organizacja i Ludzie" icon="add-user">
+  {/* Kafel 3: Organizacja */}
+  <Card title="Organizacja i Ludzie" icon="user-group">
     Kontakty projektowe, harmonogramy i baza wiedzy dla Twojego zespołu.
     [Centrum Operacyjne](/projekty/organizacja/)
   </Card>
 
+  {/* Kafel 4: Formalności */}
   <Card title="Zasoby i Formalności" icon="document">
     Dostęp do repozytoriów, Google Drive, umów i rozliczeń.
     [Twoje archiwum](/projekty/formalnosci/)
