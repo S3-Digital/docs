@@ -1,47 +1,37 @@
 ---
-title: Baza Wiedzy Sikora Digital
-description: Witaj w panelu klienta.
-template: splash
+title: Centrum Dowodzenia | Sikora Digital
 hero:
-  tagline: Witaj w panelu klienta. Poniżej znajdziesz dostęp do raportów oraz dokumentacji Twoich projektów.
+  tagline: Pełny wgląd w rozwój Twojego cyfrowego ekosystemu.
   actions:
-    - text: Przewodnik po panelu
-      link: /guides/start-here/
-      icon: right-arrow
-      variant: primary
-    - text: Project Log (Centrum Operacji)
-      link: /communication/
+    - text: Project Log (Oś czasu)
+      link: /project-log/
       icon: rocket
-      variant: secondary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import ServerStatus from '../../components/dashboard/ServerStatus.astro';
-import config from '../../data/config.yaml';
+import ServerStatus from '../../modules/ServerStatus.astro';
 
-<ServerStatus 
-  enabled={config.modules.dashboard.enabled} 
-  apiKey={config.modules.dashboard.api_key} 
-/>
+{/* Status serwera jako dowód, że czuwacie nad jego biznesem 24/7 */}
+<ServerStatus />
 
 <CardGrid>
-  <Card title="Dashboardy i Raporty" icon="document">
-    Analiza wyników i notatki z zarządem.
-    [Wejdź do raportów](/reports/)
+  <Card title="Wydajność i Stabilność" icon="rocket">
+    Czuwamy nad fundamentem Twojego biznesu. Tu znajdziesz monitoring uptime i dokumentację techniczną.
+    [Sprawdź status](/projekty/technologie/)
   </Card>
 
-  <Card title="Dokumentacja Projektów" icon="open-book">
-    Makiety i strategie marketingowe.
-    [Przeglądaj projekty](/projects/marketing/)
+  <Card title="Wzrost i Marketing" icon="chart">
+    Makiety, strategie i raporty z kampanii. Wszystko, co buduje Twoją widoczność.
+    [Zobacz postępy](/projekty/marketing/)
   </Card>
 
-  <Card title="Rozliczenia i Umowy" icon="puzzle">
-    Umowy, RODO i dostęp do Google Drive.
-    [Sprawdź dokumenty](/billing/)
+  <Card title="Organizacja i Ludzie" icon="add-user">
+    Kontakty projektowe, harmonogramy i baza wiedzy dla Twojego zespołu.
+    [Centrum Operacyjne](/projekty/organizacja/)
   </Card>
 
-  <Card title="Baza Wiedzy (Ogólna)" icon="setting">
-    Poradniki i standardy współpracy.
-    [Przejdź do bazy wiedzy](https://baza-wiedzy.twoja-domena.com)
+  <Card title="Zasoby i Formalności" icon="document">
+    Dostęp do repozytoriów, Google Drive, umów i rozliczeń.
+    [Twoje archiwum](/projekty/formalnosci/)
   </Card>
 </CardGrid>
