@@ -1,0 +1,32 @@
+---
+const { info, nazwaDzialu } = Astro.props;
+---
+
+<div class="status-box">
+    <strong>Dział: {nazwaDzialu.toUpperCase()}</strong>
+    <p>Opiekun: {info.opiekun}</p>
+    <div class={`dot ${info.status}`}></div>
+</div>
+
+<style>
+    .status-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: #222;
+        padding: 10px;
+        margin: 5px 0;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .active {
+        background: #48c774;
+        box-shadow: 0 0 5px #48c774;
+    }
+    .monitoring {
+        background: #ffdd57;
+    }
+</style>

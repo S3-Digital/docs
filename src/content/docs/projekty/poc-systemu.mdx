@@ -1,0 +1,16 @@
+---
+title: "PoC: System Operacyjny Sikora"
+---
+
+import info from '../../../data/global-info.json';
+import BizCard from '../../../modules/BizCard.astro';
+import DeptStatus from '../../../modules/DeptStatus.astro';
+
+### Podgląd Firmy (Dane z JSON)
+<BizCard firma={info} />
+
+---
+
+### Statusy Operacyjne (Ten sam JSON, inny moduł)
+<DeptStatus nazwaDzialu="Marketing" info={info.działy.marketing} />
+<DeptStatus nazwaDzialu="IT" info={info.działy.it} />

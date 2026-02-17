@@ -1,0 +1,21 @@
+{
+    "nazwa": "Sikora Digital",
+    "NIP": "1234567890",
+    "tagline": "Systemy, które myślą za Ciebie",
+    "działy": {
+        "marketing": {
+            "opiekun": "Ania",
+            "status": "active"
+        },
+        "it": {
+            "opiekun": "Marek",
+            "status": "monitoring"
+        }
+    },
+    "wyniki_roczne": [
+        10,
+        25,
+        15,
+        40
+    ]
+}
