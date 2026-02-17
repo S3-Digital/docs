@@ -1,16 +1,16 @@
 ---
 title: Centrum Dowodzenia
-description: Panel klienta Sikora Digital.
+description: Pełny wgląd w rozwój Twojego cyfrowego ekosystemu.
 template: splash
 hero:
-  tagline: Pełny wgląd w rozwój Twojego cyfrowego ekosystemu.
+  tagline: Witaj w Sikora Digital. Poniżej znajdziesz statusy, raporty i dokumentację Twoich projektów.
   actions:
     - text: Oś Czasu (Project Log)
-      link: /projekty/technologie/
+      link: /project-log/
       icon: rocket
       variant: primary
     - text: Przewodnik po panelu
-      link: /projekty/organizacja/
+      link: /guides/start-here/
       icon: open-book
       variant: minimal
 ---
@@ -19,7 +19,6 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 import ServerStatus from '../../modules/ServerStatus.astro';
 import config from '../../data/config.yaml';
 
-{/* Moduł Statusu - widoczny jeśli włączony w configu */}
 {config.modules.dashboard.enabled && (
   <div style="margin-bottom: 2rem;">
     <ServerStatus />
@@ -27,27 +26,23 @@ import config from '../../data/config.yaml';
 )}
 
 <CardGrid>
-  {/* Kafel 1: Technologie */}
   <Card title="Wydajność i Stabilność" icon="laptop">
-    Czuwamy nad fundamentem Twojego biznesu. Monitoring uptime i dokumentacja techniczna.
+    Monitorowanie uptime i dokumentacja techniczna fundamentów Twojego biznesu.
     [Sprawdź status](/projekty/technologie/)
   </Card>
 
-  {/* Kafel 2: Marketing */}
   <Card title="Wzrost i Marketing" icon="rocket">
-    Makiety, strategie i raporty z kampanii. Wszystko, co buduje Twoją widoczność.
+    Strategie, makiety i raporty z kampanii budujących Twoją widoczność.
     [Zobacz postępy](/projekty/marketing/)
   </Card>
 
-  {/* Kafel 3: Organizacja */}
-  <Card title="Organizacja i Ludzie" icon="user-group">
+  <Card title="Organizacja i Ludzie" icon="pencil">
     Kontakty projektowe, harmonogramy i baza wiedzy dla Twojego zespołu.
     [Centrum Operacyjne](/projekty/organizacja/)
   </Card>
 
-  {/* Kafel 4: Formalności */}
-  <Card title="Zasoby i Formalności" icon="document">
-    Dostęp do repozytoriów, Google Drive, umów i rozliczeń.
+  <Card title="Zasoby i Formalności" icon="setting">
+    Dostęp do repozytoriów, umów, rozliczeń i wspólnych zasobów Drive.
     [Twoje archiwum](/projekty/formalnosci/)
   </Card>
 </CardGrid>
