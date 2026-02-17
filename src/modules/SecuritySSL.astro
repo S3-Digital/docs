@@ -1,0 +1,32 @@
+---
+// src/modules/SecuritySSL.astro
+const { apiKey } = Astro.props; // Możesz przekazać klucz per klient
+
+// Mock danych dla demonstracji (w wersji produkcyjnej fetch z API UptimeRobot)
+const sslData = {
+    status: "active", // active, warning (bliski termin), expired
+    expiryDate: "2027-01-15",
+    provider: "Cloudflare Inc",
+};
+
+const getStatusDetails = (status) => {
+    if (status === "active") return { label: "AKTYWNY", color: "#4caf50" };
+    if (status === "warning")
+        return { label: "WYGASA WKRÓTCE", color: "#ff9800" };
+    return { label: "NIEAKTYWNY / BŁĄD", color: "#f44336" };
+};
+
+const { label, color } = getStatusDetails(sslData.status);
+---
+
+<div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+    <div
+        style={`width: 8px; height: 8px; border-radius: 50%; background: ${color}; box-shadow: 0 0 5px ${color};`}
+    >
+    </div>
+    <span style="color: var(--sl-color-text-muted);">Certyfikat SSL:</span>
+    <strong style={`color: ${color};`}>{label}</strong>
+    <small style="color: #666; margin-left: auto;"
+        >(Ważny do: {sslData.expiryDate})</small
+    >
+</div>

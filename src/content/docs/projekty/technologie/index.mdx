@@ -6,6 +6,9 @@ description: Monitoring infrastruktury i parametry techniczne projektu.
 import { Card, CardGrid, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 import ServerStatus from '../../../../modules/ServerStatus.astro';
 import SitePerformance from '../../../../modules/SitePerformance.astro';
+import SecuritySSL from '../../../../modules/SecuritySSL.astro';
+import SecurityWAF from '../../../../modules/SecurityWAF.astro';
+import SecurityAccess from '../../../../modules/SecurityAccess.astro';
 
 <Aside type="tip" title="Gwarancja Dostępności (SLA)">
   Twoje systemy są monitorowane w trybie 24/7. Obecny poziom dostępności (Uptime) wynosi **99.98%**.
@@ -35,9 +38,10 @@ Zestawienie technologii i zabezpieczeń chroniących Twój biznes.
     * **Backupy:** Wykonywane co 24h (retencja 30 dni)
   </TabItem>
   <TabItem label="Bezpieczeństwo">
-    * **Certyfikat SSL:** Aktywny (Enterprise Grade)
-    * **WAF:** Cloudflare Web Application Firewall (ochrona przed DDoS)
-    * **Dostęp:** Izolowany przez Cloudflare Access
+    {/* Wywołujemy gotowe moduły - każdy dba o swoją logikę */}
+    <SecuritySSL />
+    <SecurityWAF />
+    <SecurityAccess level="full" />
   </TabItem>
   <TabItem label="Dokumentacja">
     * [Instrukcja Panelu Admina](/projekty/technologie/dokumentacja)
