@@ -1,7 +1,45 @@
 ---
 title: Organizacja i Ludzie
+description: Zespół projektowy, standardy komunikacji i harmonogram spotkań.
 ---
 
-import ProjectContacts from '../../../../modules/ProjectContacts.astro';
+import { Card, CardGrid, Aside, Steps } from '@astrojs/starlight/components';
+import ProjectTeam from '../../../../modules/ProjectTeam.astro';
 
-<ProjectContacts />
+<Aside type="tip" title="Centrum Komunikacji">
+  Głównym kanałem komunikacji operacyjnej jest Twój dedykowany kanał na Slack/E-mail. Dla spraw pilnych prosimy o kontakt telefoniczny z Project Managerem.
+</Aside>
+
+## 👥 Twoja Ekipa w Sikora Digital
+Ludzie, którzy codziennie pracują nad sukcesem Twojego projektu.
+
+<ProjectTeam />
+
+---
+
+## 📅 Rytm Pracy i Spotkania
+Regularna synchronizacja to klucz do braku opóźnień.
+
+<CardGrid>
+  <Card title="Statusy Tygodniowe" icon="calendar">
+    **Kiedy:** Każdy wtorek, 10:00  
+    **Cel:** Omówienie postępów z ostatniego tygodnia i plan na kolejny.
+  </Card>
+  <Card title="Podsumowanie Miesiąca" icon="document">
+    **Kiedy:** Ostatni czwartek miesiąca  
+    **Cel:** Raportowanie wyników (ROI, Uptime) i planowanie budżetu.
+  </Card>
+</CardGrid>
+
+---
+
+## 🚀 Standardy Współpracy
+Aby pracowało nam się efektywnie, stosujemy poniższe zasady:
+
+<Steps>
+1. **Zgłaszanie zadań:** Wszystkie nowe pomysły trafiają do Project Logu lub na e-mail PM-a.
+2. **Czas odpowiedzi:** Na wiadomości e-mail odpowiadamy w ciągu 4h (w dni robocze).
+3. **Akceptacje:** Kluczowe decyzje (np. makiety) wymagają akceptacji pisemnej w panelu lub mailowo.
+</Steps>
+
+[Dowiedz się więcej o naszych procedurach →](/projekty/organizacja/standardy)

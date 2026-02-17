@@ -1,0 +1,71 @@
+---
+const team = [
+    {
+        name: "Adam Sikora",
+        role: "Strategy & Oversight",
+        email: "adam@sikora-digital.pl",
+        hours: "09:00 - 17:00",
+        avatar: "AS",
+    },
+    {
+        name: "Karolina Nowak",
+        role: "Project Manager",
+        email: "karolina@sikora-digital.pl",
+        hours: "08:00 - 16:00",
+        avatar: "KN",
+    },
+    {
+        name: "Michał Tech",
+        role: "Lead Developer",
+        email: "michal@sikora-digital.pl",
+        hours: "10:00 - 18:00",
+        avatar: "MT",
+    },
+];
+---
+
+<div
+    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;"
+>
+    {
+        team.map((member) => (
+            <div style="background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); padding: 1.5rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: var(--sl-color-text-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                        {member.avatar}
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; color: var(--sl-color-white);">
+                            {member.name}
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--sl-color-text-muted);">
+                            {member.role}
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem; font-size: 0.85rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                        <span style="color: var(--sl-color-text-muted);">
+                            E-mail:
+                        </span>
+                        <a
+                            href={`mailto:${member.email}`}
+                            style="color: var(--sl-color-text-accent); text-decoration: none;"
+                        >
+                            Kontakt
+                        </a>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--sl-color-text-muted);">
+                            Dostępność:
+                        </span>
+                        <span style="color: var(--sl-color-white);">
+                            {member.hours}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        ))
+    }
+</div>
