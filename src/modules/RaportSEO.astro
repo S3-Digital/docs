@@ -1,0 +1,82 @@
+---
+// src/modules/RaportSEO.astro
+const { klientID, integracja, dane = [] } = Astro.props;
+---
+
+<div class="raport-container">
+    <div class="header">
+        <h3>Raport SEO: {klientID}</h3>
+        <span class="badge">{integracja}</span>
+    </div>
+
+    <div class="stats-grid">
+        {
+            dane.map((item) => (
+                <div class="stat-card">
+                    <div class="month">{item.miesiac}</div>
+                    <div class="value">
+                        {item.ruch.toLocaleString()} <span>wejść</span>
+                    </div>
+                    <div class="meta">Konwersje: {item.konwersje}</div>
+                    <p class="note">{item.notatka}</p>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .raport-container {
+        background: #1a1b1e;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+        color: white;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .badge {
+        background: #3b82f6;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .stat-card {
+        background: #25262b;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #3b82f6;
+    }
+    .month {
+        font-size: 14px;
+        color: #909296;
+    }
+    .value {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    .value span {
+        font-size: 14px;
+        font-weight: normal;
+        color: #909296;
+    }
+    .note {
+        font-size: 13px;
+        color: #c1c2c5;
+        line-height: 1.4;
+        margin-top: 10px;
+        border-top: 1px solid #373a40;
+        pt: 10px;
+    }
+</style>
