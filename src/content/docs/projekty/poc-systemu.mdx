@@ -7,10 +7,10 @@ import BizCard from '../../../modules/BizCard.astro';
 import DeptStatus from '../../../modules/DeptStatus.astro';
 
 ### Podgląd Firmy (Dane z JSON)
+<DeptStatus nazwaDzialu="IT" info={info.działy.it} />
 <BizCard firma={info} />
 
 ---
 
 ### Statusy Operacyjne (Ten sam JSON, inny moduł)
 <DeptStatus nazwaDzialu="Marketing" info={info.działy.marketing} />
-<DeptStatus nazwaDzialu="IT" info={info.działy.it} />
