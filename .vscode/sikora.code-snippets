@@ -1,0 +1,24 @@
+{
+    "Raport SEO - Cykliczny": {
+        "prefix": "modul-seo-cykliczny",
+        "body": [
+            "import { RaportSEO } from '../../components/modules/RaportSEO';",
+            "",
+            "<RaportSEO client:visible",
+            "  klientID=\"$1\"",
+            "  integracja=\"google-ads\"",
+            "  dane={[",
+            "    { miesiac: 'Maj', ruch: 12500, konwersje: 120, notatka: '${2:Wpisz notatkę tutaj}' },",
+            "  ]}",
+            "/>"
+        ],
+        "description": "Wstawia kontener z historią raportów SEO"
+    },
+    "Dodaj Miesiąc do Raportu": {
+        "prefix": "add-seo-month",
+        "body": [
+            "{ miesiac: '${1:Czerwiec}', ruch: ${2:0}, konwersje: ${3:0}, notatka: '${4:Notatka}' },"
+        ],
+        "description": "Dodaje kolejny wiersz do istniejącego raportu"
+    }
+}

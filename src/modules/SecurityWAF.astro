@@ -1,18 +1,52 @@
 ---
-// src/modules/SecurityWAF.astro
-const threatsBlocked = 124;
+// 1. Definiujemy parametry (pobierane np. z config.yaml lub zmiennych środowiskowych)
+const CLOUDFLARE_API_TOKEN = "TWÓJ_TOKEN_CF";
+const ZONE_ID = "TWÓJ_ZONE_ID";
+
+let threatsBlocked = 0;
+let isWafActive = false;
+
+try {
+    // 2. Zapytanie do Cloudflare API (Analityka bezpieczeństwa z ostatnich 30 dni)
+    const response = await fetch(
+        `https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/security/events/summary?since=${new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()}`,
+        {
+            headers: {
+                Authorization: `Bearer ${CLOUDFLARE_API_TOKEN}`,
+                "Content-Type": "application/json",
+            },
+        },
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+        // Sumujemy zablokowane zdarzenia
+        threatsBlocked = data.result.count || 0;
+        isWafActive = true;
+    }
+} catch (e) {
+    console.error("Błąd pobierania danych WAF:", e);
+}
+
+const statusColor = isWafActive ? "#4caf50" : "#f44336";
+const statusLabel = isWafActive ? "AKTYWNA" : "BRAK DANYCH";
 ---
 
 <div
     style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-bottom: 8px;"
 >
     <div
-        style="width: 8px; height: 8px; border-radius: 50%; background: #4caf50;"
+        style={`width: 8px; height: 8px; border-radius: 50%; background: ${statusColor}; box-shadow: 0 0 5px ${statusColor};`}
     >
     </div>
     <span style="color: var(--sl-color-text-muted);">Ochrona WAF:</span>
-    <strong style="color: #4caf50;">AKTYWNA</strong>
-    <small style="color: #666; margin-left: auto;"
-        >{threatsBlocked} blokad (30d)</small
-    >
+    <strong style={`color: ${statusColor};`}>{statusLabel}</strong>
+    {
+        isWafActive && (
+            <small style="color: #666; margin-left: auto;">
+                {threatsBlocked} blokad (30d)
+            </small>
+        )
+    }
 </div>
