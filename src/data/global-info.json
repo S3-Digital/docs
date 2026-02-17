@@ -1,5 +1,5 @@
 {
-    "nazwa": "Sikora Digital",
+    "nazwa": "Sikora EMPIRE",
     "NIP": "1234567890",
     "tagline": "Systemy, które myślą za Ciebie",
     "działy": {
@@ -9,7 +9,7 @@
         },
         "it": {
             "opiekun": "Marek",
-            "status": "monitoring"
+            "status": "active"
         }
     },
     "wyniki_roczne": [
