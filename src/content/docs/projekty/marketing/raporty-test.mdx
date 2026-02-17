@@ -1,15 +1,12 @@
 ---
-title: Test Raportów Marketingowych
+title: Archiwum Raportów SEO
 ---
 
-import RaportSEO from '../../../../modules/RaportSEO.astro';
+import AccordionReport from '../../../../modules/AccordionReport.astro';
+import daneSeo from './dane-seo.json';
 
-# Raport testowy
+# Historia wyników Apex Solutions
 
-<RaportSEO 
-  klientID="apex-solutions"
-  integracja="google-ads" 
-  dane={[
-    { miesiac: 'Maj', ruch: 12500, konwersje: 120, notatka: 'Start kampanii' },
-  ]} 
-/>
+Poniżej znajdziesz interaktywne zestawienie Twoich wyników z podziałem na miesiące.
+
+<AccordionReport raporty={daneSeo} />
