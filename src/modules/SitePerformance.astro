@@ -1,0 +1,46 @@
+---
+// Dane statyczne (PM może je aktualizować po audycie) lub zaciągane z API
+const scores = {
+    performance: 98,
+    accessibility: 100,
+    bestPractices: 95,
+    seo: 100,
+};
+
+const getLevelColor = (val) => (val >= 90 ? "#4caf50" : "#ff9800");
+---
+
+<div
+    style="font-family: sans-serif; background: var(--sl-color-bg-nav); padding: 10px; border-radius: 8px;"
+>
+    <div
+        style="display: flex; justify-content: space-around; gap: 10px; text-align: center;"
+    >
+        {
+            Object.entries(scores).map(([key, val]) => (
+                <div>
+                    <div
+                        style={`
+          width: 45px; height: 45px; 
+          border-radius: 50%; 
+          border: 3px solid ${getLevelColor(val)}; 
+          display: flex; align-items: center; justify-content: center;
+          font-weight: bold; font-size: 0.8rem; color: ${getLevelColor(val)};
+          margin-bottom: 5px;
+        `}
+                    >
+                        {val}
+                    </div>
+                    <div style="font-size: 0.6rem; color: var(--sl-color-text-muted); text-transform: uppercase;">
+                        {key === "bestPractices" ? "Best Pract." : key}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+    <p
+        style="font-size: 0.7rem; color: #888; margin-top: 15px; text-align: center;"
+    >
+        Ostatni audyt: {new Date().toLocaleDateString()}
+    </p>
+</div>

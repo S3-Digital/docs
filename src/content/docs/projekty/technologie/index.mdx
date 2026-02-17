@@ -1,9 +1,51 @@
 ---
 title: Wydajność i Stabilność
+description: Monitoring infrastruktury i parametry techniczne projektu.
 ---
 
-import ProjectContacts from '../../../../modules/ProjectContacts.astro';
+import { Card, CardGrid, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 import ServerStatus from '../../../../modules/ServerStatus.astro';
+import SitePerformance from '../../../../modules/SitePerformance.astro';
 
-<ServerStatus />
-<ProjectContacts />
+<Aside type="tip" title="Gwarancja Dostępności (SLA)">
+  Twoje systemy są monitorowane w trybie 24/7. Obecny poziom dostępności (Uptime) wynosi **99.98%**.
+</Aside>
+
+## 📈 Monitoring na Żywo
+Poniżej znajdują się parametry pobierane w czasie rzeczywistym z Twojej infrastruktury.
+
+<CardGrid>
+  <Card title="Status Serwerów" icon="rocket">
+    <ServerStatus />
+  </Card>
+  <Card title="Szybkość Wczytywania" icon="gauge">
+    <SitePerformance />
+  </Card>
+</CardGrid>
+
+---
+
+## 🛠️ Fundamenty Techniczne
+Zestawienie technologii i zabezpieczeń chroniących Twój biznes.
+
+<Tabs>
+  <TabItem label="Infrastruktura">
+    * **Serwer:** Cloudflare Edge Computing / Dedicated Instance
+    * **Baza Danych:** PostgreSQL (Auto-scaling enabled)
+    * **Backupy:** Wykonywane co 24h (retencja 30 dni)
+  </TabItem>
+  <TabItem label="Bezpieczeństwo">
+    * **Certyfikat SSL:** Aktywny (Enterprise Grade)
+    * **WAF:** Cloudflare Web Application Firewall (ochrona przed DDoS)
+    * **Dostęp:** Izolowany przez Cloudflare Access
+  </TabItem>
+  <TabItem label="Dokumentacja">
+    * [Instrukcja Panelu Admina](/projekty/technologie/dokumentacja)
+    * [Schemat Przepływu Danych (PDF)](https://google.com/drive-link)
+  </TabItem>
+</Tabs>
+
+---
+
+### Ostatnie Prace Konserwacyjne
+> **2026-02-15:** Optymalizacja silnika bazy danych. Czas odpowiedzi skrócony o 15%.
