@@ -1,0 +1,23 @@
+[
+    {
+        "imie": "Michał Sikora",
+        "rola": "CEO / Strategia",
+        "telefon": "+48 600 000 000",
+        "email": "michal@sikora.pl",
+        "typ": "priorytet"
+    },
+    {
+        "imie": "Anna Nowak",
+        "rola": "Project Manager",
+        "telefon": "+48 500 000 000",
+        "email": "anna@sikora.pl",
+        "typ": "codzienny"
+    },
+    {
+        "imie": "Helpdesk IT",
+        "rola": "Wsparcie Techniczne 24/7",
+        "telefon": "+48 123 456 789",
+        "email": "support@sikora.pl",
+        "typ": "techniczny"
+    }
+]

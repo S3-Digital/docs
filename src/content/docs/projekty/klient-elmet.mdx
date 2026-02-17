@@ -1,0 +1,20 @@
+---
+title: "Panel Klienta: Elmet S.A."
+description: "Centrum dowodzenia projektem"
+---
+
+import kontaktyElmet from '../../../data/klienci/elmet-kontakty.json';
+import ClientContacts from '../../../modules/ClientContacts.astro';
+
+## 👋 Witaj w panelu projektu!
+
+Poniżej znajdziesz listę osób dedykowanych do Twojego projektu.
+
+{/* To jest ten moment: Wstrzykujemy JSON do Maszyny */}
+<ClientContacts listaKontaktow={kontaktyElmet} />
+
+---
+
+## 📜 Zasady komunikacji
+1. Sprawy pilne (awarie) -> Telefon do Helpdesk IT.
+2. Faktury i umowy -> E-mail do Project Managera.
