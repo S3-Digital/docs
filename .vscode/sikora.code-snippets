@@ -20,7 +20,7 @@
             "{ miesiac: '${1:Czerwiec}', ruch: ${2:0}, konwersje: ${3:0}, notatka: '${4:Notatka}' },"
         ],
         "description": "Dodaje kolejny wiersz do istniejącego raportu"
-    }
+    },
     "Dodaj nowy raport (JSON)": {
         "prefix": "add-report",
         "body": [
