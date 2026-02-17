@@ -5,44 +5,42 @@ template: splash
 hero:
   tagline: Pełny wgląd w rozwój Twojego cyfrowego ekosystemu.
   actions:
-    - text: Oś Czasu (Project Log)
-      link: /project-log/
-      icon: rocket
+    - text: Panel: Elmet S.A.
+      link: /projekty/klient-elmet/
+      icon: right-arrow
       variant: primary
-    - text: Przewodnik po panelu
-      link: /guides/start-here/
-      icon: open-book
+    - text: Dokumentacja (PoC)
+      link: /projekty/poc-systemu/
+      icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import ServerStatus from '../../modules/ServerStatus.astro';
-import config from '../../data/config.yaml';
 
-{config.modules.dashboard.enabled && (
-  <div style="margin-bottom: 2rem;">
-    <ServerStatus />
-  </div>
-)}
+{/* Wywołujemy komponent bez żadnych parametrów, bo klucz ma w środku */}
+<div style="margin-bottom: 2rem; display: flex; justify-content: center;">
+  <ServerStatus />
+</div>
 
 <CardGrid>
   <Card title="Wydajność i Stabilność" icon="laptop">
-    Monitorowanie uptime i dokumentacja techniczna fundamentów biznesu.
-    [Sprawdź status](/projekty/technologie/)
+    Monitorowanie uptime i dokumentacja techniczna.
+    [Sprawdź status](/projekty/poc-systemu/)
   </Card>
 
-  <Card title="Wzrost i Marketing" icon="rocket">
-    Strategie, makiety i raporty z kampanii budujących widoczność.
-    [Zobacz postępy](/projekty/marketing/)
+  <Card title="Panel Klienta (Demo)" icon="rocket">
+    Kontakty projektowe i harmonogramy.
+    **[Wejdź do Elmet S.A.](/projekty/klient-elmet/)**
   </Card>
 
   <Card title="Organizacja i Ludzie" icon="pencil">
-    Kontakty projektowe, harmonogramy i baza wiedzy dla zespołu.
-    [Centrum Operacyjne](/projekty/organizacja/)
+    Baza wiedzy dla zespołu.
+    [Centrum Operacyjne](/projekty/poc-systemu/)
   </Card>
 
   <Card title="Zasoby i Formalności" icon="open-book">
-    Dostęp do repozytoriów, umów, rozliczeń i zasobów Drive.
-    [Twoje archiwum](/projekty/formalnosci/)
+    Dostęp do repozytoriów i umów.
+    [Twoje archiwum](/projekty/poc-systemu/)
   </Card>
 </CardGrid>
