@@ -1,0 +1,23 @@
+---
+// src/modules/SecurityAccess.astro
+interface Props {
+    level?: "full" | "restricted" | "it";
+}
+const { level = "restricted" } = Astro.props;
+
+const labels = {
+    full: { txt: "PEŁNY (ZARZĄD)", col: "#9c27b0" },
+    it: { txt: "TECHNICZNY (IT)", col: "#03a9f4" },
+    restricted: { txt: "OGRANICZONY", col: "#888" },
+};
+const current = labels[level];
+---
+
+<div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+    <div
+        style={`width: 8px; height: 8px; border-radius: 50%; background: ${current.col};`}
+    >
+    </div>
+    <span style="color: var(--sl-color-text-muted);">Twój Poziom Dostępu:</span>
+    <strong style={`color: ${current.col};`}>{current.txt}</strong>
+</div>

@@ -1,0 +1,18 @@
+---
+// src/modules/SecurityWAF.astro
+const threatsBlocked = 124;
+---
+
+<div
+    style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-bottom: 8px;"
+>
+    <div
+        style="width: 8px; height: 8px; border-radius: 50%; background: #4caf50;"
+    >
+    </div>
+    <span style="color: var(--sl-color-text-muted);">Ochrona WAF:</span>
+    <strong style="color: #4caf50;">AKTYWNA</strong>
+    <small style="color: #666; margin-left: auto;"
+        >{threatsBlocked} blokad (30d)</small
+    >
+</div>
