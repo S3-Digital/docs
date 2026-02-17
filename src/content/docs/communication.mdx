@@ -1,21 +1,52 @@
 ---
-title: Panel Komunikacji Operacyjnej
-description: Operacyjne ustalenia między zespołami.
+title: Centrum Operacyjne Zespołów
+description: Zarządzanie zadaniami, plikami i ustaleniami w czasie rzeczywistym.
 ---
 
 import LiveTimeline from '../../components/dashboard/LiveTimeline.astro';
-import { Aside } from '@astrojs/starlight/components';
+import { Aside, Card, CardGrid, Icon } from '@astrojs/starlight/components';
 
-<Aside type="tip" title="Oszczędność buildów">
-  Ten panel pobiera dane "na żywo". Edycja notatek w zewnętrznym pliku nie zużywa limitów Cloudflare.
+<Aside type="tip" title="Centrum Dowodzenia">
+  To miejsce służy do synchronizacji prac między **Sikora Digital** a Twoim zespołem. Wszystkie ustalenia tutaj widoczne są wiążące dla obu stron.
 </Aside>
 
-## 🕒 Ostatnie ustalenia zespołowe
-Poniżej znajdują się najnowsze wpisy pobierane bezpośrednio z bazy operacyjnej.
+## ⚡ Szybkie Akcje
+Wybierz odpowiednią akcję, aby natychmiast przekazać informacje do zespołu operacyjnego.
+
+<CardGrid>
+  <Card title="Prześlij Materiały" icon="add-document">
+    Masz nowe grafiki, teksty lub dostęp? 
+    [Kliknij tutaj, aby wysłać pliki](https://tally.so/r/twoj-link)
+  </Card>
+  <Card title="Zgłoś Nowe Zadanie" icon="rocket">
+    Pojawił się nowy pomysł lub błąd?
+    [Otwórz formularz zgłoszenia](https://tally.so/r/twoj-link-zadania)
+  </Card>
+</CardGrid>
+
+---
+
+## 🚦 Status Blokad (Kto na kogo czeka?)
+Zanim przejdziemy do historii, sprawdźmy co obecnie wstrzymuje postęp prac:
+
+| Dział | Status | Blokada / Oczekiwanie | Odpowiedzialny |
+| :--- | :--- | :--- | :--- |
+| **Marketing** | 🔴 Krytyczne | Akceptacja budżetu kampanii Q2 | Klient (Zarząd) |
+| **IT** | 🟡 W toku | Konfiguracja subdomeny docs | Sikora Digital |
+| **HR** | 🟢 OK | Komplet materiałów rekrutacyjnych | Klient (HR) |
+
+---
+
+## 🕒 Oś czasu ustaleń (Live)
+Historia decyzji i mikro-postępów pobierana bezpośrednio z Gista.
 
 <LiveTimeline />
 
 ---
 
-## ℹ️ Instrukcja dla zespołu
-Aby dodać nową notatkę, edytuj plik w **GitHub Gist** (lub Google Sheets). Zmiany pojawią się tutaj po odświeżeniu strony przez klienta.
+## 📋 Tablica Zadań (Kanban)
+*Docelowo tutaj osadzimy (Embed) widok z Twojego Trello lub Asany, aby zespoły widziały proces produkcji każdej karty.*
+
+<Aside>
+  **Wskazówka:** Jeśli chcesz zmienić priorytet zadania na tablicy, napisz do nas na Slacku lub użyj formularza "Zgłoś Nowe Zadanie" powyżej.
+</Aside>

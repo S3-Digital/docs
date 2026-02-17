@@ -9,6 +9,10 @@ hero:
       link: /guides/
       icon: right-arrow
       variant: primary
+    - text: Project Log (Notatki z ustaleń)
+      link: /communication/
+      icon: external
+      variant: secondary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -25,18 +29,17 @@ import config from '../../data/config.yaml';
     Analiza wyników i notatki z zarządem.
     [Wejdź do raportów](/reports/)
   </Card>
+
   <Card title="Dokumentacja Projektów" icon="open-book">
     Makiety i strategie marketingowe.
     [Przeglądaj projekty](/projects/marketing/)
   </Card>
+
   <Card title="Rozliczenia i Umowy" icon="puzzle">
     Umowy, RODO i dostęp do Google Drive.
     [Sprawdź dokumenty](/billing/)
   </Card>
-  <Card title="Komunikacja Zespołowa" icon="comment">
-    Notatki operacyjne i ustalenia międzyzespołowe.
-    [Otwórz panel komunikacji](/communication/)
-  </Card>
+
   <Card title="Baza Wiedzy (Ogólna)" icon="setting">
     Poradniki i standardy współpracy.
     [Przejdź do bazy wiedzy](https://baza-wiedzy.twoja-domena.com)
