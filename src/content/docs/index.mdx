@@ -1,6 +1,7 @@
 ---
 title: Baza Wiedzy Sikora Digital
 description: Witaj w panelu klienta.
+template: splash
 hero:
   tagline: Witaj w panelu klienta. Poniżej znajdziesz dostęp do raportów oraz dokumentacji Twoich projektów.
   actions:
@@ -23,7 +24,7 @@ import config from '../../data/config.yaml';
   apiKey={config.modules.dashboard.api_key} 
 />
 
-<CardGrid stagger>
+<CardGrid>
   <Card title="Dashboardy i Raporty" icon="document">
     Analiza wyników i notatki z zarządem.
     [Wejdź do raportów](/reports/)
