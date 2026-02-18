@@ -1,30 +1,29 @@
 ---
 title: Dashboardy i Raporty
-description: Testujemy widoczność komponentów.
+description: Raporty marketingowe i statusy projektów.
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import ActionButton from '../../../components/ui/ActionButton.astro';
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+import DashboardManager from '../../components/dashboard/DashboardManager.astro';
+{/* TYLKO TA LINIA JEST POPRAWNA: */}
+import ActionButton from '../../components/ui/ActionButton.astro';
 
-{/* TEST 1: Surowy HTML (Musi się pojawić, jeśli plik działa) */}
-<div style="background: red; color: white; padding: 20px; font-weight: bold; margin-bottom: 20px;">
-  JEŚLI TO WIDZISZ, PLIK MDX DZIAŁA POPRAWNIE
-</div>
+## 🎛️ Centrum Zarządzania Dashboardami
+<DashboardManager />
 
-{/* TEST 2: Twój Komponent pod nową nazwą */}
-<SikoraButton 
-  label="Guzik Testowy" 
+---
+
+<ActionButton 
+  label="Kliknij mnie" 
   href="#" 
   variant="primary" 
-  icon="🚀" 
+  icon="📊" 
 />
 
----
-
-## Treść raportów poniżej:
-
 <Tabs>
-  <TabItem label="Test">
-    Jeśli widzisz ten tekst, a nie widzisz czerwonego paska powyżej, to znaczy, że Cloudflare Pages serwuje starą wersję strony.
+  <TabItem label="Raporty Marketingowe">
+    ### Cykliczne podsumowania
+    Poniżej znajdują się raporty:
+    * [📄 Raport Styczeń 2026](#)
   </TabItem>
 </Tabs>
