@@ -7,14 +7,20 @@ import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 import DashboardManager from '../../components/dashboard/DashboardManager.astro';
 import ActionButton from '../../components/ui/ActionButton.astro';
 
-<ActionButton 
-  label="Guzik Testowy" 
-  href="#" 
-  variant="primary" 
-  icon="🚀" 
-/>
+<div style="padding: 20px; border: 1px dashed red; margin-bottom: 2rem;">
+  <strong>TEST WIDOCZNOŚCI:</strong>
+  <br /><br />
+  <ActionButton 
+    label="Guzik Testowy" 
+    href="#" 
+    variant="primary" 
+    icon="🚀" 
+  />
+</div>
 
 ## 🎛️ Centrum Zarządzania Dashboardami
+
+Kliknij w poniższe kafelki, aby przypiąć je do panelu aktywnego na górze.
 
 <DashboardManager />
 
