@@ -1,17 +1,17 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import mdx from '@astrojs/mdx';
 
-// https://astro.build/config
 export default defineConfig({
-	// DODAJ SWÓJ ADRES (nawet tymczasowy), to pomaga Starlightowi w routingu
 	site: 'https://docs.s3-digital.com',
 	integrations: [
 		starlight({
-			title: 'Moje dokumenty',
+			title: 'Sikora Digital Portal',
 			defaultLocale: 'pl',
 			locales: {
-				pl: {
+				// 'root' sprawia, że strona główna jest pod adresem / zamiast /pl/
+				root: {
 					label: 'Polski',
 					lang: 'pl',
 				},
@@ -26,11 +26,13 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Dokumentacja',
-					// Autogeneracja szuka plików w src/content/docs/
 					autogenerate: { directory: '.' },
 				},
 			],
+			customCss: [
+				// Tutaj możesz dodać ścieżkę do własnego CSS w przyszłości
+			],
 		}),
+		mdx(),
 	],
-	// USUNĘLIŚMY SEKCJĘ VITE Z PLUGINEM YAML
 });

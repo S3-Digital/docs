@@ -57,5 +57,27 @@
             ],
             "description": "Dodaje moduł statusu bezpieczeństwa"
         }
+    },
+    {
+        "Sikora Action Button": {
+            "prefix": "s-button",
+            "body": [
+                "<ActionButton ",
+                "  label=\"${1:Tekst przycisku}\" ",
+                "  href=\"${2:#}\" ",
+                "  icon=\"${3:📊}\" ",
+                "/>"
+            ],
+            "description": "Wstawia sformalizowany przycisk akcji Sikora Digital"
+        },
+        "Sikora Section Header": {
+            "prefix": "s-header",
+            "body": [
+                "## 📌 ${1:Tytuł Sekcji}",
+                "---",
+                "${2:Opis sekcji...}"
+            ],
+            "description": "Wstawia nagłówek sekcji z linią oddzielającą"
+        }
     }
 }

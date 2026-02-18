@@ -1,133 +1,79 @@
 ---
-const { raporty } = Astro.props;
+interface Props {
+    items?: Array<{
+        title: string;
+        content: string;
+    }>;
+}
+
+const { items = [] } = Astro.props;
 ---
 
-<div class="accordion-container">
+<div class="s-accordion-container">
     {
-        raporty.map((item) => (
-            <details class="report-item">
-                <summary>
-                    <div class="summary-content">
-                        <span class="month">{item.miesiac}</span>
-                        <span class="brief">
-                            Ruch: <strong>{item.ruch.toLocaleString()}</strong>
-                        </span>
-                        <span class="icon">▼</span>
-                    </div>
+        items.map((item: any) => (
+            <details class="s-accordion-item">
+                <summary class="s-accordion-summary">
+                    <span class="s-accordion-title">
+                        {item.title || "Rozwiń szczegóły"}
+                    </span>
+                    <span class="s-accordion-icon">↓</span>
                 </summary>
-                <div class="details-content">
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <small>Ruch całkowity</small>
-                            <p>{item.ruch.toLocaleString()}</p>
-                        </div>
-                        <div class="stat-box">
-                            <small>Konwersje</small>
-                            <p>{item.konwersje}</p>
-                        </div>
-                    </div>
-                    <div class="note-box">
-                        <h4>Analiza ekspercka:</h4>
-                        <p>{item.notatka}</p>
-                    </div>
-                </div>
+                <div class="s-accordion-content">{item.content}</div>
             </details>
         ))
     }
 </div>
 
 <style>
-    .accordion-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin: 20px 0;
-    }
-    .report-item {
-        background: #1a1b1e;
-        border: 1px solid #333;
+    .s-accordion-container {
+        margin: 1.5rem 0;
+        border: 1px solid #e5e7eb;
         border-radius: 8px;
         overflow: hidden;
-        transition: 0.3s;
-    }
-    .report-item[open] {
-        border-color: #3b82f6;
     }
 
-    summary {
-        list-style: none;
-        padding: 15px 20px;
-        cursor: pointer;
-        background: #25262b;
-        transition: background 0.2s;
-    }
-    summary:hover {
-        background: #2c2e33;
-    }
-    summary::-webkit-details-marker {
-        display: none;
+    .s-accordion-item {
+        border-bottom: 1px solid #e5e7eb;
     }
 
-    .summary-content {
+    .s-accordion-item:last-child {
+        border-bottom: none;
+    }
+
+    .s-accordion-summary {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 1rem;
+        background: #f9fafb;
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none; /* Ukrywa domyślny trójkącik w Chrome */
     }
-    .month {
-        font-weight: bold;
-        font-size: 1.1rem;
-        color: #fff;
+
+    .s-accordion-summary::-webkit-details-marker {
+        display: none; /* Ukrywa domyślny trójkącik w Safari */
     }
-    .brief {
-        color: #909296;
-        font-size: 0.9rem;
+
+    .s-accordion-content {
+        padding: 1rem;
+        line-height: 1.6;
+        background: white;
+        color: #374151;
     }
-    .icon {
-        font-size: 0.8rem;
-        color: #3b82f6;
-        transition: 0.3s;
+
+    .s-accordion-item[open] .s-accordion-summary {
+        background: #f3f4f6;
+        border-bottom: 1px solid #e5e7eb;
     }
-    .report-item[open] .icon {
+
+    .s-accordion-item[open] .s-accordion-icon {
         transform: rotate(180deg);
     }
 
-    .details-content {
-        padding: 20px;
-        background: #1a1b1e;
-        border-top: 1px solid #333;
-    }
-    .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .stat-box {
-        background: #25262b;
-        padding: 10px 15px;
-        border-radius: 6px;
-    }
-    .stat-box small {
-        color: #909296;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-    }
-    .stat-box p {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin: 5px 0 0 0;
-        color: #3b82f6;
-    }
-
-    .note-box h4 {
-        margin: 0 0 10px 0;
-        font-size: 0.9rem;
-        color: #fff;
-    }
-    .note-box p {
-        margin: 0;
-        color: #c1c2c5;
-        line-height: 1.6;
-        font-size: 0.95rem;
+    .s-accordion-icon {
+        transition: transform 0.2s ease;
+        color: #9ca3af;
     }
 </style>

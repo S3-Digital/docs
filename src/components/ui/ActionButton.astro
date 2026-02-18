@@ -1,10 +1,10 @@
 ---
 interface Props {
-    label: string; // Tekst na guziku
-    href: string; // Link docelowy
-    variant?: "primary" | "secondary" | "outline" | "danger"; // Styl
-    icon?: string; // Opcjonalna ikona (np. emoji lub klasa)
-    target?: "_blank" | "_self"; // Czy otwierać w nowym oknie
+    label: string;
+    href: string;
+    variant?: "primary" | "secondary" | "outline" | "danger";
+    icon?: string;
+    target?: "_blank" | "_self";
 }
 
 const {
@@ -15,13 +15,12 @@ const {
     target = "_blank",
 } = Astro.props;
 
-// Mapowanie kolorów do wariantów (łatwa edycja globalna)
 const styles = {
-    primary: "background: #2563eb; color: white; border: none;", // Niebieski
-    secondary: "background: #4b5563; color: white; border: none;", // Szary
+    primary: "background: #2563eb; color: white; border: none;",
+    secondary: "background: #4b5563; color: white; border: none;",
     outline:
-        "background: transparent; color: #2563eb; border: 2px solid #2563eb;", // Ramka
-    danger: "background: #dc2626; color: white; border: none;", // Czerwony
+        "background: transparent; color: #2563eb; border: 2px solid #2563eb;",
+    danger: "background: #dc2626; color: white; border: none;",
 };
 ---
 
@@ -43,21 +42,10 @@ const styles = {
         text-decoration: none;
         transition: all 0.2s ease-in-out;
         cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin: 5px 0;
     }
-
     .action-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         opacity: 0.9;
-    }
-
-    .action-btn:active {
-        transform: translateY(0);
-    }
-
-    .icon {
-        font-size: 1.1em;
     }
 </style>

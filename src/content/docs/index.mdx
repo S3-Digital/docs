@@ -1,45 +1,27 @@
 ---
 title: Centrum Dowodzenia
-description: Panel klienta Sikora Digital.
+description: Panel operacyjny Sikora Digital.
 template: splash
 hero:
   tagline: Pełny wgląd w rozwój Twojego cyfrowego ekosystemu.
   actions:
-    - text: Panel - Elmet S.A.
-      link: /projekty/klient-elmet/
+    - text: Panel - Firma X
+      link: /klienci/firma-x/
       icon: right-arrow
       variant: primary
-    - text: Dokumentacja (PoC)
+    - text: Dokumentacja Systemowa
       link: /projekty/poc-systemu/
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import ServerStatus from '../../modules/ServerStatus.astro';
-
-<div style="margin-bottom: 2rem; display: flex; justify-content: center;">
-  <ServerStatus />
-</div>
 
 <CardGrid>
-  <Card title="Wydajność i Stabilność" icon="laptop">
+  <Card title="Wydajność" icon="laptop">
     Monitorowanie uptime i dokumentacja techniczna.
-    [Sprawdź status](/projekty/poc-systemu/)
   </Card>
-
-  <Card title="Panel Klienta (Demo)" icon="rocket">
-    Kontakty projektowe i harmonogramy.
-    **[Wejdź do Elmet S.A.](/projekty/klient-elmet/)**
-  </Card>
-
-  <Card title="Organizacja i Ludzie" icon="pencil">
-    Baza wiedzy dla zespołu.
-    [Centrum Operacyjne](/projekty/poc-systemu/)
-  </Card>
-
-  <Card title="Zasoby i Formalności" icon="open-book">
-    Dostęp do repozytoriów i umów.
-    [Twoje archiwum](/projekty/poc-systemu/)
+  <Card title="Relacje" icon="rocket">
+    Kontakty projektowe i harmonogramy współpracy.
   </Card>
 </CardGrid>

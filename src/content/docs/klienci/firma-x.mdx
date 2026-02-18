@@ -1,19 +1,10 @@
-import ActionButton from '../../../components/ui/ActionButton.astro';
+import AccordionReport from '../../../modules/AccordionReport.astro';
 
-## 📊 Wyniki za Lipiec
-Poniżej znajduje się pełny raport wydajności kampanii.
+## 📁 Szczegóły techniczne
 
-{/* Przycisk Główny */}
-<ActionButton 
-  label="Otwórz Raport Google Data Studio" 
-  href="https://datastudio.google.com/..." 
-  icon="📈" 
-/>
-
-{/* Przycisk Dodatkowy (np. do pliku) */}
-<ActionButton 
-  label="Pobierz Fakturę PDF" 
-  href="https://drive.google.com/..." 
-  variant="outline" 
-  icon="📄" 
+<AccordionReport 
+  items={[
+    { title: "Infrastruktura", content: "Serwer Cloudflare Pages działa poprawnie." },
+    { title: "Bezpieczeństwo", content: "Wdrożono model Zero Trust Access." }
+  ]} 
 />
