@@ -1,58 +1,34 @@
 ---
-import { getDaysToExpiry, getSecurityLevel } from "../utils/sikora-core";
+interface Props {
+    data?: {
+        ssl_expiry?: string;
+        status?: string;
+        provider?: string;
+    };
+}
 
-const { sslData } = Astro.props;
-const daysLeft = getDaysToExpiry(sslData.ssl_expiry);
-const level = getSecurityLevel(daysLeft);
+// Pobieramy dane z Props, ale tworzymy "bezpiecznik" (pusty obiekt jako fallback)
+const { data = {} } = Astro.props;
 
-const statusMessages = {
-    safe: "Certyfikat jest bezpieczny",
-    warning: "Uwaga: Certyfikat wkrótce wygaśnie!",
-    danger: "KRYTYCZNE: Odnowienie natychmiastowe!",
-};
+// Używamy opcjonalnego łańcuchowania, żeby uniknąć błędu 'undefined'
+const expiryDate = data?.ssl_expiry || "Brak danych";
+const status = data?.status || "Nieznany";
 ---
 
-<div class={`ssl-box ${level}`}>
-    <h4>Tarcza Bezpieczeństwa: {sslData.domain}</h4>
-    <p>{statusMessages[level]}</p>
-    <div class="days-counter">Zostało dni: <strong>{daysLeft}</strong></div>
+<div class="s-security-card">
+    <h4>🔒 Status Certyfikatu SSL</h4>
+    <p>Status: <strong>{status}</strong></p>
+    <p>Wygasa: <span>{expiryDate}</span></p>
 </div>
 
 <style>
-    .ssl-box {
-        padding: 15px;
-        border-left: 5px solid;
+    .s-security-card {
+        padding: 1rem;
+        border: 1px solid #e5e7eb;
         border-radius: 8px;
-        background: #1a1a1a;
-        margin: 20px 0;
+        background: #fdfdfd;
     }
-    .safe {
-        border-color: #48c774;
-        color: #48c774;
-    }
-    .warning {
-        border-color: #ffdd57;
-        color: #ffdd57;
-    }
-    .danger {
-        border-color: #f14668;
-        color: #f14668;
-        animation: pulse 2s infinite;
-    }
-    .days-counter {
-        font-size: 1.2rem;
-        margin-top: 10px;
-        color: white;
-    }
-    @keyframes pulse {
-        0% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.5;
-        }
-        100% {
-            opacity: 1;
-        }
+    strong {
+        color: #059669;
     }
 </style>
