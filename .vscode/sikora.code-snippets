@@ -48,6 +48,7 @@
             ],
             "description": "Dodaje nowy blok raportu do pliku JSON"
         },
+        {}
         "Klocek Security": {
             "prefix": "add-security",
             "body": [
