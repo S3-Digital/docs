@@ -17,12 +17,10 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import ServerStatus from '../../modules/ServerStatus.astro';
-{/* Importujemy nasz nowy przycisk */}
 import ActionButton from '../../components/ui/ActionButton.astro';
 
 <ServerStatus />
 
-{/* TEST PRZYCISKÓW */}
 <div style="margin-bottom: 2rem;">
   <ActionButton label="Raport PDF" href="#" variant="primary" icon="📄" />
   <ActionButton label="Zgłoś awarię" href="#" variant="danger" icon="🚨" />
