@@ -1,0 +1,48 @@
+---
+/* src/components/ui/GoogleDriveCard.astro */
+interface Props {
+    url: string;
+    label: string;
+    size?: string;
+}
+const { url, label, size = "Nieznany rozmiar" } = Astro.props;
+---
+
+<a href={url} target="_blank" class="drive-card">
+    <div class="icon-box">📁</div>
+    <div class="content">
+        <div class="title">{label}</div>
+        <div class="meta">
+            <span class="badge">Google Drive</span>
+            <span class="separator">•</span>
+            <span class="size">{size}</span>
+        </div>
+    </div>
+    <div class="action">↗</div>
+</a>
+
+<style>
+    .drive-card {
+        display: flex;
+        align-items: center;
+        background: #f8f9fa; /* Jasne tło, nie Google'owe */
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 16px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.2s;
+        margin-bottom: 1rem;
+    }
+    .drive-card:hover {
+        border-color: #4caf50; /* Twój kolor brandowy */
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .meta {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 4px;
+    }
+    /* ... reszta stylów ... */
+</style>

@@ -6,6 +6,7 @@ description: Raporty marketingowe i statusy projektów.
 import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 import DashboardManager from '../../components/dashboard/DashboardManager.astro';
 import ActionButton from '../../components/ui/ActionButton.astro';
+import GoogleDriveCard from '../../components/ui/GoogleDriveCard.astro';
 
 {/* Główny przycisk akcji na górze strony */}
 <div style="margin-bottom: 2rem;">
@@ -22,6 +23,16 @@ import ActionButton from '../../components/ui/ActionButton.astro';
 Kliknij w poniższe kafelki, aby przypiąć je do panelu aktywnego na górze.
 
 <DashboardManager />
+
+### Materiały wideo z drona
+Poniżej znajdują się surowe pliki do pobrania:
+
+<GoogleDriveCard 
+  url="https://drive.google.com/drive/folders/PRZYKLADOWY_LINK" 
+  label="Surowe nagrania z drona - Projekt Stadion" 
+  size="45 GB"
+  type="folder"
+/>
 
 ---
 

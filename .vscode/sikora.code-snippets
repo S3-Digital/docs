@@ -65,5 +65,16 @@
             "${2:Opis sekcji...}"
         ],
         "description": "Wstawia nagłówek sekcji z linią oddzielającą"
+    },
+    "Karta Google Drive": {
+        "prefix": "s-drive",
+        "body": [
+            "<GoogleDriveCard ",
+            "  url=\"${1:LINK_DO_DRIVE}\" ",
+            "  label=\"${2:Nazwa folderu}\" ",
+            "  size=\"${3:np. 2 GB}\" ",
+            "/>"
+        ],
+        "description": "Wstawia estetyczną kartę linkującą do Google Drive"
     }
 }
