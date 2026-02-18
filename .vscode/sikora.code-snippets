@@ -71,10 +71,10 @@
         "body": [
             "<GoogleDriveCard ",
             "  url=\"${1:LINK_DO_DRIVE}\" ",
-            "  label=\"${2:Nazwa folderu}\" ",
-            "  size=\"${3:np. 2 GB}\" ",
+            "  label=\"${2:Nazwa Zasobu}\" ",
+            "  detail=\"${3:Opcjonalny opis (np. 45 GB)}\" ",
             "/>"
         ],
-        "description": "Wstawia estetyczną kartę linkującą do Google Drive"
+        "description": "Karta do Google Drive (z opcjonalnym opisem)"
     }
 }

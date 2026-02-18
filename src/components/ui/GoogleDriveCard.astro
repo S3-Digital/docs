@@ -1,48 +1,151 @@
 ---
-/* src/components/ui/GoogleDriveCard.astro */
 interface Props {
     url: string;
     label: string;
-    size?: string;
+    detail?: string; // Opcjonalny opis, np. "45 GB" albo "Wersja Robocza"
 }
-const { url, label, size = "Nieznany rozmiar" } = Astro.props;
+
+const { url, label, detail } = Astro.props;
 ---
 
-<a href={url} target="_blank" class="drive-card">
-    <div class="icon-box">📁</div>
+<a href={url} target="_blank" rel="noopener noreferrer" class="drive-card">
+    <div class="icon-box">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+            ></path>
+        </svg>
+    </div>
+
     <div class="content">
-        <div class="title">{label}</div>
+        <div class="label">{label}</div>
         <div class="meta">
-            <span class="badge">Google Drive</span>
-            <span class="separator">•</span>
-            <span class="size">{size}</span>
+            <span class="source">Google Drive</span>
+
+            {/* Wyświetl kropkę i szczegół TYLKO jeśli ktoś go wpisał */}
+            {
+                detail && (
+                    <>
+                        <span class="dot">•</span>
+                        <span class="detail">{detail}</span>
+                    </>
+                )
+            }
         </div>
     </div>
-    <div class="action">↗</div>
+
+    <div class="action-icon">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                points="7 7 17 7 17 17"></polyline></svg
+        >
+    </div>
 </a>
 
 <style>
     .drive-card {
         display: flex;
         align-items: center;
-        background: #f8f9fa; /* Jasne tło, nie Google'owe */
-        border: 1px solid #e9ecef;
+        background-color: #f8f9fa;
+        border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 16px;
         text-decoration: none;
-        color: #333;
-        transition: all 0.2s;
+        color: inherit;
+        transition: all 0.2s ease;
         margin-bottom: 1rem;
+        max-width: 600px;
     }
+
+    :global([data-theme="dark"]) .drive-card {
+        background-color: #1e293b;
+        border-color: #334155;
+    }
+
     .drive-card:hover {
-        border-color: #4caf50; /* Twój kolor brandowy */
-        background: #fff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-color: #4caf50;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
+
+    .icon-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #e2e8f0;
+        border-radius: 8px;
+        margin-right: 16px;
+        color: #475569;
+        flex-shrink: 0;
+    }
+
+    :global([data-theme="dark"]) .icon-box {
+        background-color: #334155;
+        color: #94a3b8;
+    }
+
+    .content {
+        flex: 1;
+        min-width: 0; /* Zapobiega rozpychaniu layoutu przez długi tekst */
+    }
+
+    .label {
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .meta {
-        font-size: 0.85rem;
-        color: #666;
-        margin-top: 4px;
+        font-size: 0.8rem;
+        color: #64748b;
+        display: flex;
+        align-items: center;
     }
-    /* ... reszta stylów ... */
+
+    :global([data-theme="dark"]) .meta {
+        color: #94a3b8;
+    }
+
+    .dot {
+        margin: 0 6px;
+        font-weight: bold;
+    }
+    .source {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+    }
+
+    .action-icon {
+        margin-left: 12px;
+        color: #cbd5e1;
+    }
+    .drive-card:hover .action-icon {
+        color: #4caf50;
+    }
 </style>
