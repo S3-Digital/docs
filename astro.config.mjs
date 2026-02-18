@@ -1,14 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import yaml from '@rollup/plugin-yaml'; // <--- 1. DODANO IMPORT TUTAJ
 
 // https://astro.build/config
 export default defineConfig({
+	// DODAJ SWÓJ ADRES (nawet tymczasowy), to pomaga Starlightowi w routingu
+	site: 'https://docs.s3-digital.com',
 	integrations: [
 		starlight({
 			title: 'Moje dokumenty',
-			defaultLocale: 'pl', // Twoje ustawienia językowe zostają bez zmian
+			defaultLocale: 'pl',
 			locales: {
 				pl: {
 					label: 'Polski',
@@ -18,21 +19,18 @@ export default defineConfig({
 			social: [
 				{
 					label: 'GitHub',
-					href: 'https://github.com/withastro/starlight',
+					href: 'https://github.com/S3-Digital/docs',
 					icon: 'github',
 				},
 			],
 			sidebar: [
 				{
 					label: 'Dokumentacja',
-					// To wygeneruje listę ze wszystkich plików w folderze docs
+					// Autogeneracja szuka plików w src/content/docs/
 					autogenerate: { directory: '.' },
 				},
 			],
 		}),
 	],
-	// <--- 2. DODANO SEKCJĘ VITE NA SAMYM DOLE (poza nawiasem integrations)
-	vite: {
-		plugins: [yaml()]
-	}
+	// USUNĘLIŚMY SEKCJĘ VITE Z PLUGINEM YAML
 });
