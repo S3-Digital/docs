@@ -1,43 +1,77 @@
 ---
+// Definiujemy interfejs Props dla pełnego wsparcia TS
 interface Props {
     label: string;
     href: string;
     variant?: "primary" | "secondary" | "outline" | "danger";
     icon?: string;
+    class?: string; // Pozwala na dodanie dodatkowych klas CSS z zewnątrz
 }
 
-const { label, href, variant = "primary", icon = "" } = Astro.props;
-
-const styles = {
-    primary: "background-color: #4caf50; color: white; border: none;",
-    secondary: "background-color: #333; color: white; border: 1px solid #444;",
-    outline:
-        "background-color: transparent; color: #4caf50; border: 2px solid #4caf50;",
-    danger: "background-color: #d32f2f; color: white; border: none;",
-};
+const {
+    label,
+    href,
+    variant = "primary",
+    icon = "",
+    class: className,
+} = Astro.props;
 ---
 
-<a href={href} class="s-btn-fixed" style={styles[variant]}>
-    {icon && <span style="margin-right: 8px;">{icon}</span>}
-    <span>{label}</span>
+<a href={href} class:list={["s-btn-fixed", variant, className]}>
+    {icon && <span class="btn-icon">{icon}</span>}
+    <span class="btn-label">{label}</span>
 </a>
 
 <style>
     .s-btn-fixed {
-        display: inline-flex; /* Zmienione na inline-flex dla lepszego wyrównania */
+        display: inline-flex;
         align-items: center;
+        justify-content: center;
         padding: 12px 24px;
         border-radius: 8px;
         font-weight: bold;
         text-decoration: none;
         min-width: 150px;
-        justify-content: center;
-        transition: opacity 0.2s;
-        /* Dodaję to, żeby na pewno był na wierzchu */
+        transition: all 0.2s ease-in-out;
         position: relative;
         z-index: 10;
+        cursor: pointer;
+        border: 2px solid transparent;
     }
+
+    /* Warianty kolorystyczne przeniesione do CSS */
+    .primary {
+        background-color: #4caf50;
+        color: white;
+    }
+    .secondary {
+        background-color: #333;
+        color: white;
+        border-color: #444;
+    }
+    .outline {
+        background-color: transparent;
+        color: #4caf50;
+        border-color: #4caf50;
+    }
+    .danger {
+        background-color: #d32f2f;
+        color: white;
+    }
+
+    .btn-icon {
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
+    }
+
     .s-btn-fixed:hover {
-        opacity: 0.8;
+        opacity: 0.9;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .s-btn-fixed:active {
+        transform: translateY(0);
     }
 </style>

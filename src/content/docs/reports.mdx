@@ -1,33 +1,30 @@
 ---
 title: Dashboardy i Raporty
-description: Raporty marketingowe i statusy projektów.
+description: Testujemy widoczność komponentów.
 ---
 
-import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
-import DashboardManager from '../../components/dashboard/DashboardManager.astro';
-import ActionButton from '../../components/ui/ActionButton.astro';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import ActionButton from '../../../components/ui/ActionButton.astro';
 
-{/* TEST 1: Przycisk przed całą resztą treści */}
-<div style="background: #222; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-  <p>TEST WIDOCZNOŚCI:</p>
-  <ActionButton 
-    label="Guzik na górze" 
-    href="#" 
-    variant="primary" 
-    icon="🚀" 
-  />
+{/* TEST 1: Surowy HTML (Musi się pojawić, jeśli plik działa) */}
+<div style="background: red; color: white; padding: 20px; font-weight: bold; margin-bottom: 20px;">
+  JEŚLI TO WIDZISZ, PLIK MDX DZIAŁA POPRAWNIE
 </div>
 
+{/* TEST 2: Twój Komponent pod nową nazwą */}
+<SikoraButton 
+  label="Guzik Testowy" 
+  href="#" 
+  variant="primary" 
+  icon="🚀" 
+/>
+
 ---
 
-## 🎛️ Centrum Zarządzania Dashboardami
-<DashboardManager />
+## Treść raportów poniżej:
 
----
-
-## 📄 Raporty i Notatki
 <Tabs>
-  <TabItem label="Raporty Marketingowe">
-    * [📄 Raport Styczeń 2026](#)
+  <TabItem label="Test">
+    Jeśli widzisz ten tekst, a nie widzisz czerwonego paska powyżej, to znaczy, że Cloudflare Pages serwuje starą wersję strony.
   </TabItem>
 </Tabs>
