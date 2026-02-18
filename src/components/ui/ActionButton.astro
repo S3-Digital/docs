@@ -4,53 +4,40 @@ interface Props {
     href: string;
     variant?: "primary" | "secondary" | "outline" | "danger";
     icon?: string;
-    target?: "_blank" | "_self";
 }
 
-const {
-    label,
-    href,
-    variant = "primary",
-    icon = "",
-    target = "_self",
-} = Astro.props;
+const { label, href, variant = "primary", icon = "" } = Astro.props;
 
-// Style dopasowane do Twojego ciemnego motywu
 const styles = {
-    primary: "background: #4caf50; color: white; border: 1px solid #4caf50;",
-    secondary: "background: #333; color: white; border: 1px solid #444;",
+    primary: "background-color: #4caf50; color: white; border: none;",
+    secondary: "background-color: #333; color: white; border: 1px solid #444;",
     outline:
-        "background: transparent; color: #4caf50; border: 1px solid #4caf50;",
-    danger: "background: #d32f2f; color: white; border: 1px solid #d32f2f;",
+        "background-color: transparent; color: #4caf50; border: 2px solid #4caf50;",
+    danger: "background-color: #d32f2f; color: white; border: none;",
 };
 ---
 
-<a href={href} class="s-action-btn" target={target} style={styles[variant]}>
-    {icon && <span class="icon">{icon}</span>}
-    <span class="label">{label}</span>
+<a href={href} class="s-btn-fixed" style={styles[variant]}>
+    {icon && <span style="margin-right: 8px;">{icon}</span>}
+    <span>{label}</span>
 </a>
 
 <style>
-    .s-action-btn {
-        display: inline-flex;
+    .s-btn-fixed {
+        display: inline-flex; /* Zmienione na inline-flex dla lepszego wyrównania */
         align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-family: sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
         text-decoration: none;
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-        margin-right: 10px;
-        margin-bottom: 10px;
+        min-width: 150px;
+        justify-content: center;
+        transition: opacity 0.2s;
+        /* Dodaję to, żeby na pewno był na wierzchu */
+        position: relative;
+        z-index: 10;
     }
-
-    .s-action-btn:hover {
-        transform: translateY(-2px);
-        opacity: 0.9;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    .s-btn-fixed:hover {
+        opacity: 0.8;
     }
 </style>

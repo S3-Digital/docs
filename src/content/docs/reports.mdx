@@ -7,43 +7,27 @@ import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 import DashboardManager from '../../components/dashboard/DashboardManager.astro';
 import ActionButton from '../../components/ui/ActionButton.astro';
 
+{/* TEST 1: Przycisk przed całą resztą treści */}
+<div style="background: #222; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+  <p>TEST WIDOCZNOŚCI:</p>
+  <ActionButton 
+    label="Guzik na górze" 
+    href="#" 
+    variant="primary" 
+    icon="🚀" 
+  />
+</div>
+
+---
+
 ## 🎛️ Centrum Zarządzania Dashboardami
-
-Kliknij w poniższe kafelki, aby przypiąć je do panelu aktywnego na górze i zobaczyć szczegóły.
-
 <DashboardManager />
 
 ---
 
 ## 📄 Raporty i Notatki
-
 <Tabs>
   <TabItem label="Raporty Marketingowe">
-    ### Cykliczne podsumowania
-    Poniżej znajdują się raporty z działań operacyjnych:
-    
-    * [📄 Raport Styczeń 2026 - Podgląd PDF](#)
-    * [📊 Analiza Konkurencji Q1 - Link do arkusza](#)
-    * [📈 Wyniki Kampanii Ads - Looker Studio](#)
-  </TabItem>
-  
-  <TabItem label="Notatki ze spotkań (Zarząd)">
-    > **Dostęp limitowany:** Sekcja przeznaczona wyłącznie dla Prezesa, CEO oraz wyznaczonych opiekunów projektu.
-
-    ### Ostatnie ustalenia strategiczne
-    <Steps>
-    1. **Spotkanie 10.02:** Zatwierdzenie budżetu na kampanię wiosenną i KPI dla działu sprzedaży.
-    2. **Spotkanie 01.02:** Omówienie strategii wejścia na rynek DACH (Niemcy, Austria, Szwajcaria).
-    3. **Spotkanie 15.01:** Podsumowanie roku 2025 i rewizja planów na 2026.
-    </Steps>
+    * [📄 Raport Styczeń 2026](#)
   </TabItem>
 </Tabs>
-
-<br />
-
-<ActionButton 
-  label="Kliknij mnie" 
-  href="#" 
-  variant="primary" 
-  icon="📊" 
-/>
