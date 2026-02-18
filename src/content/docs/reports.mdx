@@ -5,25 +5,40 @@ description: Raporty marketingowe i statusy projektów.
 
 import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 import DashboardManager from '../../components/dashboard/DashboardManager.astro';
-{/* TYLKO TA LINIA JEST POPRAWNA: */}
 import ActionButton from '../../components/ui/ActionButton.astro';
 
+<ActionButton 
+  label="Guzik Testowy" 
+  href="#" 
+  variant="primary" 
+  icon="🚀" 
+/>
+
 ## 🎛️ Centrum Zarządzania Dashboardami
+
 <DashboardManager />
 
 ---
 
-<ActionButton 
-  label="Kliknij mnie" 
-  href="#" 
-  variant="primary" 
-  icon="📊" 
-/>
+## 📄 Raporty i Notatki
 
 <Tabs>
   <TabItem label="Raporty Marketingowe">
     ### Cykliczne podsumowania
-    Poniżej znajdują się raporty:
-    * [📄 Raport Styczeń 2026](#)
+    Poniżej znajdują się raporty z działań operacyjnych:
+    
+    * [📄 Raport Styczeń 2026 - Podgląd PDF](#)
+    * [📊 Analiza Konkurencji Q1 - Link do arkusza](#)
+    * [📈 Wyniki Kampanii Ads - Looker Studio](#)
+  </TabItem>
+  
+  <TabItem label="Notatki ze spotkań (Zarząd)">
+    > **Dostęp limitowany:** Sekcja przeznaczona wyłącznie dla Prezesa.
+
+    ### Ostatnie ustalenia strategiczne
+    <Steps>
+    1. **Spotkanie 10.02:** Zatwierdzenie budżetu.
+    2. **Spotkanie 01.02:** Strategia wejścia na rynek.
+    </Steps>
   </TabItem>
 </Tabs>
