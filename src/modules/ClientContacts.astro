@@ -1,86 +1,40 @@
 ---
-// 1. Odbieramy "paliwo" (dane) przekazane przez plik MDX
-const { listaKontaktow } = Astro.props;
+interface Osoba {
+    name: string;
+    rola: string;
+    email: string;
+}
 
-// 2. Definiujemy kolory dla różnych typów kontaktów (mała logika wizualna)
-const typyKolorow = {
-    priorytet: "#ff3860", // Czerwony dla CEO
-    codzienny: "#3273dc", // Niebieski dla PM
-    techniczny: "#23d160", // Zielony dla IT
+interface Props {
+    kontakty: Osoba[];
+}
+
+const { kontakty = [] } = Astro.props;
+
+const rolaStyle: Record<string, string> = {
+    priorytet: "color: #ff4757;",
+    codzienny: "color: #2ed573;",
+    techniczny: "color: #1e90ff;",
 };
 ---
 
-<div class="kontakty-container">
-    <h3>📞 Kluczowe Osoby Kontaktowe</h3>
-    <div class="grid">
-        {/* 3. Pętla: "Dla każdej osoby w JSON-ie, stwórz kafelkę" */}
-        {
-            listaKontaktow.map((osoba) => (
-                <div
-                    class="karta-kontaktu"
-                    style={`border-left: 5px solid ${typyKolorow[osoba.typ] || "#ccc"}`}
+<div class="contacts-grid">
+    {
+        kontakty.map((osoba: Osoba) => (
+            <div class="contact-card">
+                <strong>{osoba.name}</strong>
+                <p
+                    style={
+                        osoba.rola
+                            ? rolaStyle[osoba.rola as keyof typeof rolaStyle] ||
+                              ""
+                            : ""
+                    }
                 >
-                    <div class="info">
-                        <strong>{osoba.imie}</strong>
-                        <span class="rola">{osoba.rola}</span>
-                    </div>
-                    <div class="akcje">
-                        <a href={`tel:${osoba.telefon}`} class="btn">
-                            Zadzwoń
-                        </a>
-                        <a href={`mailto:${osoba.email}`} class="link">
-                            E-mail
-                        </a>
-                    </div>
-                </div>
-            ))
-        }
-    </div>
+                    {osoba.rola}
+                </p>
+                <a href={`mailto:${osoba.email}`}>{osoba.email}</a>
+            </div>
+        ))
+    }
 </div>
-
-<style>
-    /* 4. Style CSS - wygląd (scoped, nie popsuje reszty strony) */
-    .kontakty-container {
-        margin: 2rem 0;
-        padding: 1rem;
-        background: #f9f9f9;
-        border-radius: 8px;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-    .karta-kontaktu {
-        background: white;
-        padding: 1rem;
-        border-radius: 4px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .rola {
-        font-size: 0.85em;
-        color: #666;
-        display: block;
-    }
-    .akcje {
-        margin-top: auto;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-    .btn {
-        background: #eee;
-        padding: 5px 10px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 0.9em;
-        font-weight: bold;
-    }
-    .link {
-        font-size: 0.9em;
-    }
-</style>

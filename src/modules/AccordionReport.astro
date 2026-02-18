@@ -1,9 +1,12 @@
 ---
+// Definiujemy typy, żeby TypeScript był zadowolony
+interface Item {
+    title: string;
+    content: string;
+}
+
 interface Props {
-    items?: Array<{
-        title: string;
-        content: string;
-    }>;
+    items?: Item[];
 }
 
 const { items = [] } = Astro.props;
@@ -11,13 +14,11 @@ const { items = [] } = Astro.props;
 
 <div class="s-accordion-container">
     {
-        items.map((item: any) => (
+        items.map((item: Item) => (
             <details class="s-accordion-item">
                 <summary class="s-accordion-summary">
-                    <span class="s-accordion-title">
-                        {item.title || "Rozwiń szczegóły"}
-                    </span>
-                    <span class="s-accordion-icon">↓</span>
+                    <span>{item.title}</span>
+                    <span class="icon">↓</span>
                 </summary>
                 <div class="s-accordion-content">{item.content}</div>
             </details>
@@ -26,54 +27,12 @@ const { items = [] } = Astro.props;
 </div>
 
 <style>
-    .s-accordion-container {
-        margin: 1.5rem 0;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .s-accordion-item {
-        border-bottom: 1px solid #e5e7eb;
-    }
-
-    .s-accordion-item:last-child {
-        border-bottom: none;
-    }
-
+    /* Tutaj zachowaj swoje style z działającej wersji */
     .s-accordion-summary {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        background: #f9fafb;
         cursor: pointer;
-        font-weight: 600;
-        list-style: none; /* Ukrywa domyślny trójkącik w Chrome */
-    }
-
-    .s-accordion-summary::-webkit-details-marker {
-        display: none; /* Ukrywa domyślny trójkącik w Safari */
-    }
-
-    .s-accordion-content {
-        padding: 1rem;
-        line-height: 1.6;
-        background: white;
-        color: #374151;
-    }
-
-    .s-accordion-item[open] .s-accordion-summary {
-        background: #f3f4f6;
-        border-bottom: 1px solid #e5e7eb;
-    }
-
-    .s-accordion-item[open] .s-accordion-icon {
-        transform: rotate(180deg);
-    }
-
-    .s-accordion-icon {
-        transition: transform 0.2s ease;
-        color: #9ca3af;
+        padding: 10px;
+        background: #1a1a1a;
+        margin-top: 5px;
+        border-radius: 4px;
     }
 </style>

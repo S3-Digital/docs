@@ -1,24 +1,20 @@
 ---
-title: Panel Klienta - Firma X
-description: Dashboard operacyjny i raporty wydajności.
+title: Panel - Firma X
+description: Pełny wgląd w infrastrukturę i wyniki Firmy X.
 ---
 
 import ActionButton from '../../../components/ui/ActionButton.astro';
 import AccordionReport from '../../../modules/AccordionReport.astro';
 
-# Witamy w panelu Firmy X
+# 🏢 Panel Operacyjny: Firma X
 
-<ActionButton 
-  label="📊 Otwórz Raport" 
-  href="https://google.com" 
-  icon="📈" 
-/>
+Poniżej znajdują się aktualne statusy i dokumentacja.
 
-## 📁 Szczegóły techniczne
+<ActionButton label="Otwórz Dashboard" href="#" icon="📈" />
 
 <AccordionReport 
   items={[
-    { title: "Status Systemu", content: "Wszystkie systemy operacyjne działają poprawnie." },
-    { title: "Bezpieczeństwo", content: "Wdrożono autoryzację Cloudflare Access." }
+    { title: "Infrastruktura", content: "Serwer Cloudflare Pages działa poprawnie." },
+    { title: "Zasoby", content: "Dostęp do repozytoriów został przyznany." }
   ]} 
 />
