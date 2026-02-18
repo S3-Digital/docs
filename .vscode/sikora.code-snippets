@@ -34,51 +34,36 @@
         ],
         "description": "Dodaje nowy blok raportu do pliku JSON"
     },
-    {
-        "Dodaj nowy raport (JSON)": {
-            "prefix": "add-report",
-            "body": [
-                "{",
-                "  \"id\": \"${1:2026-01}\",",
-                "  \"miesiac\": \"${2:Miesiąc 2026}\",",
-                "  \"ruch\": ${3:0},",
-                "  \"konwersje\": ${4:0},",
-                "  \"notatka\": \"${5:Wpisz analizę tutaj...}\"",
-                "},"
-            ],
-            "description": "Dodaje nowy blok raportu do pliku JSON"
-        },
-        {}
-        "Klocek Security": {
-            "prefix": "add-security",
-            "body": [
-                "import SecurityStatus from '../../../../modules/SecurityStatus.astro';",
-                "",
-                "<SecurityStatus sslStatus=\"Active\" wafBlocked={${1:12}} lastScan=\"${CURRENT_DATE}\" />"
-            ],
-            "description": "Dodaje moduł statusu bezpieczeństwa"
-        }
+    "Klocek Security": {
+        "prefix": "add-security",
+        "body": [
+            "import SecurityStatus from '../../../../modules/SecurityStatus.astro';",
+            "",
+            "<SecurityStatus sslStatus=\"Active\" wafBlocked={${1:12}} lastScan=\"${CURRENT_DATE}\" />"
+        ],
+        "description": "Dodaje moduł statusu bezpieczeństwa"
     },
-    {
-        "Sikora Action Button": {
-            "prefix": "s-button",
-            "body": [
-                "<ActionButton ",
-                "  label=\"${1:Tekst przycisku}\" ",
-                "  href=\"${2:#}\" ",
-                "  icon=\"${3:📊}\" ",
-                "/>"
-            ],
-            "description": "Wstawia sformalizowany przycisk akcji Sikora Digital"
-        },
-        "Sikora Section Header": {
-            "prefix": "s-header",
-            "body": [
-                "## 📌 ${1:Tytuł Sekcji}",
-                "---",
-                "${2:Opis sekcji...}"
-            ],
-            "description": "Wstawia nagłówek sekcji z linią oddzielającą"
-        }
+    "Sikora Action Button": {
+        "prefix": "s-button",
+        "body": [
+            "import ActionButton from '../../components/ui/ActionButton.astro';",
+            "",
+            "<ActionButton ",
+            "  label=\"${1:Tekst przycisku}\" ",
+            "  href=\"${2:#}\" ",
+            "  variant=\"${3|primary,secondary,outline,danger|}\" ",
+            "  icon=\"${4:📊}\" ",
+            "/>"
+        ],
+        "description": "Wstawia sformalizowany przycisk akcji Sikora Digital"
+    },
+    "Sikora Section Header": {
+        "prefix": "s-header",
+        "body": [
+            "## 📌 ${1:Tytuł Sekcji}",
+            "---",
+            "${2:Opis sekcji...}"
+        ],
+        "description": "Wstawia nagłówek sekcji z linią oddzielającą"
     }
 }
